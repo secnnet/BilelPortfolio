@@ -133,27 +133,9 @@
             border-top: 1px solid var(--divider-color);
         }
 
-        .social-icons {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000000;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin: 5px;
-            font-size: 16px;
-        }
-
-        .social-icons a:hover {
-            background-color: #444;
+        #twitter-timeline {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .divider {
@@ -170,7 +152,7 @@
     </style>
 </head>
 <body data-theme="light">
-    <div class="theme-switcher" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle theme">🌞</div>
+    <div class="theme-switcher" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle theme">💡</div>
 
     <header class="hero">
         <h1><span class="wave">👋</span> Hi, I'm Bilel!</h1>
@@ -195,21 +177,12 @@
             </p>
         </section>
 
-        <section class="section" id="support">
-            <h2>Support My Work</h2>
-            <p>
-                <a href="https://www.buymeacoffee.com/iBil3l" target="_blank">
-                    <img src="https://img.shields.io/static/v1?label=Buy%20Me%20a%20Coffee&message=ibil3l&color=FF813F&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me a Coffee">
-                </a>
-            </p>
-        </section>
-
-        <section class="section" id="connect">
-            <h2>Connect with Me</h2>
-            <div class="social-icons">
-                <a href="https://x.com/Bilel_Here" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Twitter_Logo.svg" alt="X Logo" style="width: 100px; height: auto;">
-                </a>
+        <section class="section" id="tweets">
+            <h2>Latest Tweets</h2>
+            <p>Stay updated with my latest insights and activities on X (formerly Twitter).</p>
+            <div id="twitter-timeline">
+                <a class="twitter-timeline" href="https://twitter.com/Bilel_Here?ref_src=twsrc%5Etfw">Tweets by Bilel_Here</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </section>
 
@@ -235,10 +208,10 @@
 
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '🌙';
+                themeIcon.textContent = '🔦';
             } else {
                 body.setAttribute('data-theme', 'light');
-                themeIcon.textContent = '🌞';
+                themeIcon.textContent = '💡';
             }
         }
 
