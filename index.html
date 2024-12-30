@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- This sets the character encoding to UTF-8 for supporting multiple languages -->
     <meta charset="UTF-8">
-    <!-- Makes the page responsive to different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Describes your portfolio for search engines -->
     <meta name="description" content="Bilel's portfolio showcasing expertise in Security Architecture and Penetration Testing.">
     <meta name="keywords" content="Bilel, Security Architect, Penetration Testing, OSCP, GitHub, Portfolio">
     <meta name="author" content="Bilel">
-    <!-- The title that shows in the browser tab -->
     <title>Bilel's Enhanced Portfolio</title>
     <style>
-        /* Define reusable colors and styles for light mode */
         :root {
             --background-color: #f8f8f8;
             --text-color: #333;
@@ -23,7 +18,6 @@
             --divider-color: #ddd;
         }
 
-        /* Override colors for dark mode */
         [data-theme="dark"] {
             --background-color: #121212;
             --text-color: #e0e0e0;
@@ -34,7 +28,6 @@
             --divider-color: #333;
         }
 
-        /* Basic styling for the page */
         body {
             margin: 0;
             font-family: 'Noto Sans', Arial, sans-serif;
@@ -44,7 +37,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Style for the main heading */
         h1 {
             font-size: 3rem;
             font-weight: bold;
@@ -52,14 +44,12 @@
             margin: 40px 0;
         }
 
-        /* Wave animation for the hand emoji */
         h1 .wave {
             display: inline-block;
             animation: wave 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: 70% 70%;
         }
 
-        /* Keyframes for smooth wave motion */
         @keyframes wave {
             0%, 100% {
                 transform: rotate(0deg);
@@ -72,14 +62,12 @@
             }
         }
 
-        /* Style for subheadings */
         h2 {
             font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 20px;
         }
 
-        /* Link styles for normal and hover states */
         a {
             color: var(--link-color);
             text-decoration: none;
@@ -91,7 +79,6 @@
             border-bottom-color: var(--link-hover-color);
         }
 
-        /* Position and style for the theme toggle button */
         .theme-switcher {
             position: absolute;
             top: 100px;
@@ -101,7 +88,6 @@
             z-index: 10;
         }
 
-        /* Hero section at the top */
         .hero {
             background: var(--section-background);
             color: var(--text-color);
@@ -116,7 +102,6 @@
             margin-top: 20px;
         }
 
-        /* Grid layout for content sections */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -126,7 +111,6 @@
             padding: 0 20px;
         }
 
-        /* Styling for individual sections */
         .section {
             background-color: var(--section-background);
             padding: 20px;
@@ -140,7 +124,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Footer styles */
         footer {
             text-align: center;
             margin-top: 40px;
@@ -150,7 +133,6 @@
             border-top: 1px solid var(--divider-color);
         }
 
-        /* Styles for social media icons */
         .social-icons {
             display: flex;
             align-items: center;
@@ -174,14 +156,12 @@
             background-color: #444;
         }
 
-        /* Divider line style */
         .divider {
             height: 1px;
             background-color: var(--divider-color);
             margin: 40px 0;
         }
 
-        /* Adjust grid layout for smaller screens */
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -190,19 +170,15 @@
     </style>
 </head>
 <body data-theme="light">
-    <!-- Theme toggle button -->
     <div class="theme-switcher" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle theme">🌞</div>
 
-    <!-- Hero section with a waving hand -->
     <header class="hero">
         <h1><span class="wave">👋</span> Hi, I'm Bilel!</h1>
         <p>I’m a <strong>Security Architect</strong> with a passion for <strong>Penetration Testing</strong>. I enjoy uncovering vulnerabilities, solving challenging security puzzles, and learning something new every day.</p>
     </header>
 
-    <!-- Divider line -->
     <div class="divider"></div>
 
-    <!-- Content sections -->
     <main class="grid">
         <section class="section" id="about">
             <h2>About Me</h2>
@@ -228,21 +204,29 @@
             </p>
         </section>
 
+        <section class="section" id="linkedin">
+            <h2>LinkedIn</h2>
+            <p>
+                <a href="https://www.linkedin.com/in/graineb/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Logo" style="width: 100px; height: auto;">
+                </a>
+            </p>
+        </section>
+
         <section class="section" id="connect">
-            <h2>Connect with Me</h2>
-            <div class="social-icons">
-                <a href="https://x.com/Bilel_Here" target="_blank">X</a>
-            </div>
+            <h2>Twitter Feed</h2>
+            <p>
+                <a class="twitter-timeline" data-theme="light" href="https://twitter.com/Bilel_Here?ref_src=twsrc%5Etfw">Tweets by Bilel_Here</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </p>
         </section>
     </main>
 
-    <!-- Footer section -->
     <footer>
         <p>&copy; <span id="current-year"></span> Bilel | Minimalist Portfolio</p>
     </footer>
 
     <script>
-        // Function to toggle light and dark themes
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
