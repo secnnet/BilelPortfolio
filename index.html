@@ -46,7 +46,7 @@
 
         h1 .wave {
             display: inline-block;
-            animation: wave 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            animation: wave 2.5s infinite cubic-bezier(0.25, 1, 0.5, 1);
             transform-origin: 70% 70%;
         }
 
@@ -54,11 +54,17 @@
             0%, 100% {
                 transform: rotate(0deg);
             }
-            25% {
+            20% {
                 transform: rotate(15deg);
             }
-            75% {
-                transform: rotate(-15deg);
+            40% {
+                transform: rotate(-10deg);
+            }
+            60% {
+                transform: rotate(10deg);
+            }
+            80% {
+                transform: rotate(-5deg);
             }
         }
 
@@ -133,11 +139,6 @@
             border-top: 1px solid var(--divider-color);
         }
 
-        #twitter-timeline {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .divider {
             height: 1px;
             background-color: var(--divider-color);
@@ -164,7 +165,7 @@
     <main class="grid">
         <section class="section" id="about">
             <h2>About Me</h2>
-            <p>Currently, I’m working on <strong>OSCP PEN-200</strong>. I post insights on <a href="https://x.com/Bilel_Here" target="_blank">X (formerly Twitter)</a> about the labs I find challenging and how I overcome them. It’s been a humbling and rewarding journey of learning and growth so far.</p>
+            <p>Hi there! I’m Bilel, a <strong>Security Architect</strong> dedicated to creating secure systems and expanding my expertise. Outside of work, I train in <strong>Brazilian Jiu-Jitsu</strong>, where I’m working toward earning my blue belt. I also enjoy <strong>Kickboxing</strong> and <strong>Muay Thai</strong>, which challenge me both physically and mentally. When I need a break, I find peace in fishing and adventure in scuba diving. 😊 These activities help me stay balanced and energized in all aspects of life.</p>
             <p>📄 <a href="Resume.pdf" target="_blank">View my Resume</a></p>
         </section>
 
@@ -178,12 +179,12 @@
         </section>
 
         <section class="section" id="tweets">
-            <h2>Latest Tweets</h2>
-            <p>Stay updated with my latest insights and activities on X (formerly Twitter).</p>
-            <div id="twitter-timeline">
-                <a class="twitter-timeline" href="https://twitter.com/Bilel_Here?ref_src=twsrc%5Etfw">Tweets by Bilel_Here</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
+            <h2>X</h2>
+            <p>
+                <a href="https://twitter.com/bilel_here" target="_blank">
+                    <img src="https://img.shields.io/twitter/follow/bilel_here?style=social" alt="Twitter Follow Badge" style="width: 200px; height: auto;">
+                </a>
+            </p>
         </section>
 
         <section class="section" id="linkedin">
@@ -191,6 +192,15 @@
             <p>
                 <a href="https://www.linkedin.com/in/graineb/" target="_blank">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Logo" style="width: 100px; height: auto;">
+                </a>
+            </p>
+        </section>
+
+        <section class="section" id="buymeacoffee">
+            <h2>Buy Me a Coffee</h2>
+            <p>
+                <a href="https://buymeacoffee.com/ibil3l" target="_blank">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="width: 200px; height: auto;">
                 </a>
             </p>
         </section>
