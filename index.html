@@ -66,7 +66,7 @@
             top: 20px;
             right: 20px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 24px;
             padding: 8px 12px;
             border-radius: 6px;
             background-color: var(--section-background);
@@ -123,7 +123,7 @@
     </style>
 </head>
 <body data-theme="light">
-    <button class="theme-switcher" onclick="toggleTheme()">Toggle Theme</button>
+    <button class="theme-switcher" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle theme">💡</button>
 
     <header class="hero">
         <h1>Hi, I'm Bilel</h1>
@@ -133,7 +133,7 @@
     <div class="divider"></div>
 
     <main class="grid">
-        <section class="section">
+        <section class="section" id="about">
             <h2>About Me</h2>
             <p>I'm Bilel from Algeria, a Mediterranean country. I'm a cybersecurity professional with over 12 years of experience in security. While I've worked across different areas, my true passion is penetration testing and bug bounty hunting. I also train in Brazilian Jiu-Jitsu and am working my way up to a blue belt, God willing. Outside of cybersecurity, I really enjoy fishing and spearfishing.</p>
             <p>📄 <a href="Resume.pdf" target="_blank">View my Resume</a></p>
@@ -183,18 +183,11 @@
     <script>
         function toggleTheme() {
             const body = document.body;
+            const themeIcon = document.getElementById("theme-icon");
             const currentTheme = body.getAttribute("data-theme");
             const newTheme = currentTheme === "light" ? "dark" : "light";
+
             body.setAttribute("data-theme", newTheme);
             localStorage.setItem("theme", newTheme);
-        }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedTheme = localStorage.getItem("theme") || "light";
-            document.body.setAttribute("data-theme", savedTheme);
-        });
-
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+            // Update emoji dynamically
