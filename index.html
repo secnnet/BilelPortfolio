@@ -406,11 +406,11 @@
             font-size: 1rem;
         }
         
-        /* Updated certifications grid to ensure equal width boxes in a single row */
+        /* Updated certifications grid to ensure balanced 2x2 layout */
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* Changed from 3 to 2 columns */
+            gap: 25px;
             margin-bottom: 20px;
         }
         
@@ -577,7 +577,7 @@
         
         @media (max-width: 1200px) {
             .certifications-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on medium screens */
             }
             
             .hero-tagline {
@@ -589,10 +589,6 @@
         }
         
         @media (max-width: 992px) {
-            .certifications-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .expertise-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
             }
@@ -654,7 +650,7 @@
             }
             
             .certifications-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 column on small screens */
             }
             
             .expertise-grid {
