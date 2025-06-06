@@ -194,10 +194,11 @@
             margin-right: 10px;
         }
         
+        /* Updated expertise grid for uniform boxes */
         .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
+            gap: 25px;
         }
         
         .expertise-card {
@@ -206,9 +207,10 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
+            height: 300px; /* Fixed height for all cards */
             display: flex;
             flex-direction: column;
+            overflow: hidden; /* Prevent content overflow */
         }
         
         .expertise-card:hover {
@@ -220,12 +222,32 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.3rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
         }
         
         .expertise-card p {
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: auto;
+            flex-grow: 1; /* Allow paragraph to fill remaining space */
+            overflow-y: auto; /* Add scrolling if content is too long */
+            padding-right: 5px; /* Space for scrollbar */
+        }
+        
+        /* Custom scrollbar for expertise cards */
+        .expertise-card p::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .expertise-card p::-webkit-scrollbar-track {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+        
+        .expertise-card p::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
         }
         
         .timeline {
@@ -571,6 +593,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }
+            
             .hero-tagline {
                 font-size: 1.1rem; /* Slightly smaller font on medium screens */
             }
@@ -629,6 +655,10 @@
             
             .certifications-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr; /* 1 column on small screens */
             }
             
             .social-links {
@@ -715,23 +745,23 @@
             <div class="expertise-grid">
                 <div class="expertise-card">
                     <h3>Security Architecture</h3>
-                    <p>Designing comprehensive security frameworks that align with business objectives while providing robust protection against evolving threats. Experienced in creating scalable architectures for organizations of all sizes.</p>
+                    <p>I design security infrastructures that balance protection with practicality. My experience spans from small-scale deployments to enterprise-wide solutions across multiple industries and regulatory environments.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>Penetration Testing</h3>
-                    <p>Conducting thorough security assessments to identify vulnerabilities before they can be exploited. Specialized in network, web application, and cloud infrastructure testing with actionable remediation guidance.</p>
+                    <p>Finding vulnerabilities before attackers do is my specialty. I've conducted numerous penetration tests across diverse environments, helping organizations understand and address their security gaps before they become problems.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>SIEM Implementation</h3>
-                    <p>Expert in deploying and optimizing SIEM solutions including Splunk, Microsoft Sentinel, and QRadar. Focused on creating effective detection rules, alerts, and dashboards that provide meaningful security insights.</p>
+                    <p>I've led Splunk and Microsoft Sentinel deployments that transform raw data into actionable security intelligence. My implementations focus on practical detection capabilities that catch real threats without overwhelming teams with false positives.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>SOC Operations</h3>
-                    <p>Building and managing Security Operations Centers with efficient incident response workflows, threat intelligence integration, and continuous improvement processes to enhance detection and response capabilities.</p>
+                    <p>Building and leading effective security operations centers requires both technical knowledge and people skills. I've established SOC teams and processes that consistently deliver results, even under pressure.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>Threat Hunting</h3>
-                    <p>Proactively searching for indicators of compromise and advanced persistent threats that evade traditional security controls. Utilizing both automated tools and manual techniques to uncover sophisticated attackers.</p>
+                    <p>Proactive threat detection is essential in today's landscape. I develop and execute threat hunting programs that uncover hidden adversaries and strengthen overall security posture through continuous improvement.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>Security Compliance</h3>
