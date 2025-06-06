@@ -26,6 +26,7 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--background);
+            padding-top: 70px; /* Added to account for fixed navbar */
         }
         
         a {
@@ -36,6 +37,58 @@
         
         a:hover {
             color: var(--accent);
+        }
+        
+        /* Navigation Bar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 70px;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 30px;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
         }
         
         .container {
@@ -510,6 +563,31 @@
         }
         
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 10px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
             .hero {
                 padding: 80px 0;
             }
@@ -553,6 +631,23 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Bilel Graine</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#expertise" class="nav-link">Expertise</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">☰</div>
+        </div>
+    </nav>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -975,5 +1070,24 @@
             <p>© 2025 Bilel Graine</p>
         </div>
     </footer>
+
+    <!-- JavaScript for Mobile Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
