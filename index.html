@@ -362,15 +362,18 @@
         
         .contact p {
             max-width: 600px;
-            margin: 0 auto 30px;
-            text-align: center; /* Ensure text is centered */
+            margin: 0 auto 50px; /* Increased bottom margin from 30px to 50px */
+            text-align: center;
+            font-size: 1.1rem; /* Slightly larger text */
+            line-height: 1.8; /* Increased line height for better readability */
         }
         
         .social-links {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 40px; /* Increased gap between social links */
+            margin-top: 30px; /* Added top margin */
             margin-bottom: 40px;
         }
         
@@ -388,9 +391,9 @@
         }
         
         .social-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
+            width: 60px; /* Increased size from 50px to 60px */
+            height: 60px; /* Increased size from 50px to 60px */
+            margin-bottom: 15px; /* Increased bottom margin from 10px to 15px */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -400,14 +403,15 @@
         }
         
         .social-icon svg {
-            width: 24px;
-            height: 24px;
+            width: 28px; /* Increased size from 24px to 28px */
+            height: 28px; /* Increased size from 24px to 28px */
             fill: white;
         }
         
         .social-name {
             font-weight: 500;
             color: var(--text);
+            font-size: 1.05rem; /* Slightly larger text */
         }
         
         .cv-request {
@@ -494,7 +498,7 @@
             }
             
             .social-links {
-                gap: 10px;
+                gap: 20px;
             }
             
             .social-link {
@@ -869,7 +873,9 @@
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
             <div class="card">
-                <p style="text-align: center;">I'm always open to discussing new projects, security challenges, or opportunities to collaborate.</p>
+                <p style="text-align: center; margin-bottom: 50px;">
+                    I'm always open to discussing new projects, security challenges, or opportunities to collaborate.
+                </p>
                 
                 <div class="social-links">
                     <a href="https://github.com/secnnet" target="_blank" class="social-link">
