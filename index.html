@@ -6,13 +6,14 @@
     <title>Bilel - Cybersecurity Portfolio</title>
     <style>
         :root {
-            --primary-dark: #0A192F; /* Deep Navy */
-            --secondary-dark: #112240; /* Dark Slate */
-            --accent-teal: #64FFDA;
-            --text-light: #E6F1FF;
-            --text-medium: #8892B0;
-            --card-bg: rgba(255, 255, 255, 0.05); /* Subtle card background */
-            --border-color: rgba(100, 255, 218, 0.1);
+            --primary-dark: #f5f5f7; /* Light background */
+            --secondary-dark: #e8e8ed; /* Slightly darker for cards */
+            --accent-teal: #0070c9; /* Professional blue accent */
+            --text-dark: #333333; /* Dark text for light background */
+            --text-medium: #555555; /* Medium text for light background */
+            --card-bg: #ffffff; /* White card background */
+            --border-color: rgba(0, 112, 201, 0.2); /* Subtle border color */
+            --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
 
         * {
@@ -43,10 +44,11 @@
             left: 0;
             width: 100%;
             padding: 20px 0;
-            background-color: rgba(10, 25, 47, 0.85); /* Slightly transparent */
+            background-color: rgba(245, 245, 247, 0.95); /* Slightly transparent */
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: top 0.3s;
+            box-shadow: 0 2px 10px var(--shadow-color);
         }
 
         nav .container {
@@ -71,7 +73,7 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
@@ -113,7 +115,7 @@
 
         .hero-name {
             font-size: clamp(40px, 8vw, 70px);
-            color: var(--text-light);
+            color: var(--text-dark);
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.1;
@@ -148,7 +150,7 @@
         }
 
         .btn:hover {
-            background-color: rgba(100, 255, 218, 0.1);
+            background-color: rgba(0, 112, 201, 0.1);
         }
 
         /* General Section Styling */
@@ -158,7 +160,7 @@
 
         .section-title {
             font-size: 2rem;
-            color: var(--text-light);
+            color: var(--text-dark);
             margin-bottom: 50px;
             text-align: center;
             position: relative;
@@ -200,6 +202,7 @@
             border-radius: 4px;
             position: relative;
             z-index: 1;
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
         
         .about-image-container::after {
@@ -229,21 +232,21 @@
         }
 
         .expertise-card {
-            background-color: var(--secondary-dark);
+            background-color: var(--card-bg);
             padding: 30px;
-            border-radius: 4px;
+            border-radius: 8px;
             border-left: 3px solid var(--accent-teal);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
 
         .expertise-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px var(--shadow-color);
         }
 
         .expertise-card h3 {
-            color: var(--text-light);
+            color: var(--text-dark);
             font-size: 1.3rem;
             margin-bottom: 15px;
         }
@@ -303,9 +306,9 @@
             width: 0;
             z-index: 1;
             right: 30px;
-            border: medium solid var(--secondary-dark);
+            border: medium solid var(--card-bg);
             border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent var(--secondary-dark);
+            border-color: transparent transparent transparent var(--card-bg);
         }
 
         .timeline-item.right::before {
@@ -316,9 +319,9 @@
             width: 0;
             z-index: 1;
             left: 30px;
-            border: medium solid var(--secondary-dark);
+            border: medium solid var(--card-bg);
             border-width: 10px 10px 10px 0;
-            border-color: transparent var(--secondary-dark) transparent transparent;
+            border-color: transparent var(--card-bg) transparent transparent;
         }
 
         .timeline-item.right::after {
@@ -327,14 +330,14 @@
 
         .timeline-content {
             padding: 20px;
-            background-color: var(--secondary-dark);
+            background-color: var(--card-bg);
             position: relative;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
         
         .timeline-content h3 {
-            color: var(--text-light);
+            color: var(--text-dark);
             font-size: 1.2rem;
             margin-bottom: 5px;
         }
@@ -354,10 +357,10 @@
         }
 
         .certification-card {
-            background-color: var(--secondary-dark);
+            background-color: var(--card-bg);
             padding: 25px;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
 
         .certification-card h3 {
@@ -402,6 +405,7 @@
             font-size: 0.9rem;
             color: var(--text-medium);
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+            background-color: var(--secondary-dark);
         }
 
         footer a {
@@ -418,7 +422,7 @@
                 position: absolute;
                 top: 70px;
                 left: 0;
-                background-color: rgba(10, 25, 47, 0.95);
+                background-color: rgba(245, 245, 247, 0.95);
             }
             .nav-links.active {
                 display: flex;
@@ -466,7 +470,7 @@
             }
             .timeline-item.left::before, .timeline-item.right::before {
                 left: 40px;
-                border-color: transparent var(--secondary-dark) transparent transparent;
+                border-color: transparent var(--card-bg) transparent transparent;
                 border-width: 10px 10px 10px 0;
             }
             .certifications-grid {
@@ -691,7 +695,7 @@
             // Sticky Nav
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             } else {
                 navbar.style.boxShadow = 'none';
             }
