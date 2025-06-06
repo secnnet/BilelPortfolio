@@ -6,9 +6,9 @@
     <title>Bilel's Portfolio</title>
     <style>
         :root {
-            --primary: #006064;
+            --primary: #003366;
             --secondary: #f5f5f5;
-            --accent: #00838f;
+            --accent: #0056b3;
             --text: #333333;
             --background: #f0f2f5;
             --card-bg: #ffffff;
@@ -203,6 +203,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .expertise-card:hover {
@@ -214,6 +217,12 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.3rem;
+        }
+        
+        .expertise-card p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         
         .timeline {
@@ -374,11 +383,10 @@
         
         /* Updated certifications grid to ensure equal width boxes in a single row */
         .certifications-grid {
-            display: flex;
-            flex-wrap: nowrap;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
         
         .certification-category {
@@ -386,11 +394,10 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
             height: 350px; /* Fixed height for all boxes */
             overflow-y: auto; /* Allow scrolling for content that exceeds the height */
+            display: flex;
+            flex-direction: column;
         }
         
         .certification-category h3 {
@@ -545,20 +552,13 @@
         
         @media (max-width: 1200px) {
             .certifications-grid {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .certification-category {
-                flex: 0 0 calc(33.333% - 20px);
-                max-width: calc(33.333% - 20px);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
         @media (max-width: 992px) {
-            .certification-category {
-                flex: 0 0 calc(50% - 20px);
-                max-width: calc(50% - 20px);
+            .certifications-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -613,9 +613,11 @@
                 grid-template-columns: 1fr;
             }
             
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .certification-category {
-                flex: 0 0 100%;
-                max-width: 100%;
                 height: auto;
                 min-height: 200px;
             }
