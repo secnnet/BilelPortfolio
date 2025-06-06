@@ -133,9 +133,12 @@
         
         .hero-tagline {
             font-size: 1.3rem;
-            max-width: 700px;
+            max-width: 900px; /* Increased from 700px to accommodate longer text */
             margin: 0 auto;
             opacity: 0.9;
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis if text overflows */
         }
         
         .card {
@@ -554,11 +557,22 @@
             .certifications-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            
+            .hero-tagline {
+                white-space: nowrap; /* Keep nowrap even on smaller screens */
+                font-size: 1.2rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
         
         @media (max-width: 992px) {
             .certifications-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem; /* Slightly smaller font on medium screens */
             }
         }
         
@@ -600,34 +614,33 @@
                 font-size: 1.3rem;
             }
             
+            .hero-tagline {
+                font-size: 1rem; /* Even smaller font on mobile */
+                padding: 0 10px; /* Add some padding on very small screens */
+            }
+            
             .section {
                 padding: 40px 0;
             }
             
             .section-title {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-            
-            .expertise-grid, .projects-grid {
-                grid-template-columns: 1fr;
+                font-size: 1.8rem;
             }
             
             .certifications-grid {
                 grid-template-columns: 1fr;
             }
             
-            .certification-category {
-                height: auto;
-                min-height: 200px;
-            }
-            
             .social-links {
                 gap: 20px;
             }
-            
-            .social-link {
-                width: 100px;
+        }
+        
+        @media (max-width: 480px) {
+            .hero-tagline {
+                /* Only on very small mobile screens, allow wrapping if absolutely necessary */
+                white-space: normal;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -636,8 +649,8 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">Bilel Graine</a>
-            <ul class="nav-menu">
+            <div class="nav-logo">Bilel</div>
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#expertise" class="nav-link">Expertise</a></li>
                 <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
@@ -646,10 +659,10 @@
                 <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle">☰</div>
+            <div class="nav-toggle" id="navToggle">☰</div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -658,257 +671,234 @@
             <p class="hero-tagline">Transforming security vulnerabilities into robust defenses for enterprise organizations</p>
         </div>
     </section>
-    
+
     <!-- About Section -->
-    <section id="about" class="section">
+    <section class="section" id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <div class="about-container">
-                    <div class="about-text">
-                        <p>As a security architect and penetration tester with 12+ years of experience, I've helped organizations like Microsoft, IBM, Splunk, and BlueVoyant identify vulnerabilities, strengthen defenses, and protect their most valuable assets. I've worked extensively with MSSP and MDR services across the EU, US, Asia, and UAE, giving me a global perspective on security challenges.</p>
-                        <br>
-                        <p>I excel at translating complex security challenges into practical solutions. My expertise spans SIEM implementation, SOC operations, and threat hunting—with a consistent focus on delivering security that works effectively in real-world scenarios.</p>
-                        <br>
-                        <p>When I'm not working on security challenges, I train in Brazilian Jiu-Jitsu and pursue fishing and spearfishing. These activities complement my professional mindset, reinforcing discipline, patience, and the importance of both strategy and execution.</p>
-                    </div>
-                    <div class="about-sidebar">
-                        <h3>Location</h3>
-                        <p>England, UK</p>
-                        <br>
-                        <h3>Interests</h3>
-                        <ul>
-                            <li>Brazilian Jiu-Jitsu</li>
-                            <li>Fishing & Spearfishing</li>
-                            <li>Cybersecurity Research</li>
-                        </ul>
-                    </div>
+            <div class="about-container">
+                <div class="about-text card">
+                    <p>With over 12 years of experience at organizations like Microsoft, IBM, Splunk, and BlueVoyant, I've built a career focused on identifying vulnerabilities and implementing effective security solutions. My expertise spans MSSP and MDR services, having worked across the EU, US, Asia, and UAE with clients ranging from financial institutions to manufacturing giants.</p>
+                    <br>
+                    <p>I specialize in translating complex security challenges into practical, implementable solutions. My approach combines deep technical knowledge with business acumen, ensuring security measures enhance rather than hinder operations. I've led SIEM implementations, SOC operations, and threat hunting initiatives that have measurably improved clients' security postures.</p>
+                    <br>
+                    <p>When I'm not immersed in cybersecurity, I train in Brazilian Jiu-Jitsu—a discipline that, like security work, requires strategy, patience, and adaptability. I also enjoy fishing and spearfishing, activities that provide both the thrill of the hunt and moments of reflection.</p>
+                </div>
+                <div class="about-sidebar">
+                    <h3>Location</h3>
+                    <p>England, UK</p>
+                    
+                    <h3>Core Focus Areas</h3>
+                    <ul>
+                        <li>Security Architecture</li>
+                        <li>Penetration Testing</li>
+                        <li>SIEM Implementation</li>
+                        <li>SOC Operations</li>
+                        <li>Threat Hunting</li>
+                    </ul>
+                    
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English (Fluent)</li>
+                        <li>French (Fluent)</li>
+                        <li>Arabic (Native)</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Expertise Section -->
-    <section id="expertise" class="section">
+    <section class="section" id="expertise">
         <div class="container">
             <h2 class="section-title">Areas of Expertise</h2>
             <div class="expertise-grid">
                 <div class="expertise-card">
                     <h3>Security Architecture</h3>
-                    <p>I design security infrastructures that balance protection with practicality. My experience spans from small-scale deployments to enterprise-wide solutions across multiple industries and regulatory environments.</p>
+                    <p>Designing comprehensive security frameworks that align with business objectives while providing robust protection against evolving threats. Experienced in creating scalable architectures for organizations of all sizes.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>Penetration Testing</h3>
-                    <p>Finding vulnerabilities before attackers do is my specialty. I've conducted numerous penetration tests across diverse environments, helping organizations understand and address their security gaps before they become problems.</p>
+                    <p>Conducting thorough security assessments to identify vulnerabilities before they can be exploited. Specialized in network, web application, and cloud infrastructure testing with actionable remediation guidance.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>SIEM Implementation</h3>
-                    <p>I've led Splunk and Microsoft Sentinel deployments that transform raw data into actionable security intelligence. My implementations focus on practical detection capabilities that catch real threats without overwhelming teams with false positives.</p>
+                    <p>Expert in deploying and optimizing SIEM solutions including Splunk, Microsoft Sentinel, and QRadar. Focused on creating effective detection rules, alerts, and dashboards that provide meaningful security insights.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>SOC Operations</h3>
-                    <p>Building and leading effective security operations centers requires both technical knowledge and people skills. I've established SOC teams and processes that consistently deliver results, even under pressure.</p>
+                    <p>Building and managing Security Operations Centers with efficient incident response workflows, threat intelligence integration, and continuous improvement processes to enhance detection and response capabilities.</p>
                 </div>
                 <div class="expertise-card">
                     <h3>Threat Hunting</h3>
-                    <p>Proactive threat detection is essential in today's landscape. I develop and execute threat hunting programs that uncover hidden adversaries and strengthen overall security posture through continuous improvement.</p>
+                    <p>Proactively searching for indicators of compromise and advanced persistent threats that evade traditional security controls. Utilizing both automated tools and manual techniques to uncover sophisticated attackers.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Security Compliance</h3>
+                    <p>Guiding organizations through complex regulatory requirements including GDPR, PCI DSS, ISO 27001, and industry-specific frameworks. Translating compliance needs into practical security controls.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Experience Section -->
-    <section id="experience" class="section">
+    <section class="section" id="experience">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
+            
             <div class="card">
+                <h3>Core Competencies</h3>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <h3>Security Architect</h3>
-                        <div class="period">2023 – Present</div>
+                        <h3>Security Architecture & Engineering</h3>
+                        <div class="period">Enterprise & Cloud Environments</div>
                         <ul>
-                            <li>Led MXDR service enhancement for a global security provider</li>
-                            <li>Designed unified security portal with AI-powered analytics</li>
-                            <li>Managed client relationships across 30+ countries</li>
-                            <li>Optimized detection capabilities reducing false positives by 60%</li>
+                            <li>Designed and implemented security architectures for organizations across financial services, healthcare, and manufacturing sectors</li>
+                            <li>Led security transformation initiatives for cloud migration projects, ensuring security controls were embedded throughout the process</li>
+                            <li>Developed security reference architectures that balanced protection with operational efficiency</li>
                         </ul>
                     </div>
                     
                     <div class="timeline-item">
-                        <h3>SIEM Specialist & Security Engineer</h3>
-                        <div class="period">2022 – 2023</div>
+                        <h3>SIEM Implementation & Optimization</h3>
+                        <div class="period">Splunk, Microsoft Sentinel, QRadar</div>
                         <ul>
-                            <li>Implemented and optimized Splunk and Microsoft Sentinel for multiple enterprises</li>
-                            <li>Developed comprehensive security assessment frameworks</li>
-                            <li>Created custom detection rules for industry-specific threats</li>
-                            <li>Reduced mean time to detect (MTTD) from 6 hours to 45 minutes</li>
+                            <li>Implemented enterprise-scale SIEM solutions for global organizations, including custom use case development</li>
+                            <li>Optimized existing deployments to reduce false positives and improve detection capabilities</li>
+                            <li>Created advanced correlation rules and dashboards for security operations teams</li>
                         </ul>
                     </div>
                     
                     <div class="timeline-item">
-                        <h3>SOC Lead & Security Operations Engineer</h3>
-                        <div class="period">2020 – 2022</div>
+                        <h3>SOC Leadership & Operations</h3>
+                        <div class="period">24/7 Security Monitoring</div>
                         <ul>
-                            <li>Led high-performance security operations teams across multiple organizations</li>
-                            <li>Modernized incident response protocols and playbooks</li>
-                            <li>Implemented threat intelligence integration for proactive security</li>
-                            <li>Conducted security posture assessments identifying critical vulnerabilities</li>
+                            <li>Managed SOC teams responsible for monitoring critical infrastructure across multiple industries</li>
+                            <li>Established incident response procedures and playbooks that reduced mean time to detect and respond</li>
+                            <li>Implemented threat intelligence integration to enhance proactive threat hunting capabilities</li>
                         </ul>
                     </div>
                     
                     <div class="timeline-item">
-                        <h3>Cyber Incident Response Specialist</h3>
-                        <div class="period">2019 – 2022</div>
+                        <h3>Penetration Testing & Vulnerability Management</h3>
+                        <div class="period">Internal & External Security Assessments</div>
                         <ul>
-                            <li>Led emergency incident response for APT and ransomware threats</li>
-                            <li>Performed malware analysis and forensic investigations</li>
-                            <li>Developed incident response playbooks adopted across multiple regions</li>
-                            <li>Conducted root cause analysis for major security breaches</li>
+                            <li>Conducted comprehensive penetration tests against network infrastructure, web applications, and cloud environments</li>
+                            <li>Developed vulnerability management programs that prioritized remediation based on risk</li>
+                            <li>Provided technical mentorship to junior security analysts on assessment methodologies</li>
                         </ul>
                     </div>
                     
                     <div class="timeline-item">
-                        <h3>Security Engineer & Penetration Tester</h3>
-                        <div class="period">2018 – 2019</div>
+                        <h3>Security Program Development</h3>
+                        <div class="period">Strategy & Governance</div>
                         <ul>
-                            <li>Conducted security assessments for enterprise infrastructure</li>
-                            <li>Implemented real-time threat monitoring and incident response</li>
-                            <li>Developed security policies aligned with regulatory requirements</li>
-                            <li>Led security awareness programs across organizations</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <h3>Network Security Administrator</h3>
-                        <div class="period">2016 – 2018</div>
-                        <ul>
-                            <li>Managed network security infrastructure for international organization</li>
-                            <li>Implemented access controls and authentication systems</li>
-                            <li>Conducted regular vulnerability assessments and remediation</li>
-                            <li>Ensured compliance with global security standards</li>
+                            <li>Created comprehensive security programs aligned with business objectives and risk tolerance</li>
+                            <li>Developed security policies, standards, and procedures that met regulatory requirements</li>
+                            <li>Established security metrics and KPIs to measure program effectiveness and demonstrate value</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="cv-request">
-                    <h3>Full Professional History</h3>
-                    <p>A comprehensive CV with detailed work history and project specifics is available upon request.</p>
+                    <h3>Interested in my detailed experience?</h3>
+                    <p>For a comprehensive overview of my professional background, including specific roles and achievements, please request my full CV.</p>
                     <a href="#contact" class="btn">Request Full CV</a>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section class="section" id="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="card">
                 <div class="skills-container">
                     <div class="skills-column">
-                        <h3>Core Competencies</h3>
-                        
                         <div class="skill-category">
-                            <h4>Security Architecture & Engineering</h4>
+                            <h4>Security Tools & Platforms</h4>
                             <div class="skill-tags">
-                                <span class="skill-tag">SIEM implementation</span>
-                                <span class="skill-tag">MDR/XDR solutions</span>
-                                <span class="skill-tag">Cloud security</span>
-                                <span class="skill-tag">Security frameworks</span>
+                                <span class="skill-tag">Splunk</span>
+                                <span class="skill-tag">Microsoft Sentinel</span>
+                                <span class="skill-tag">QRadar</span>
+                                <span class="skill-tag">CrowdStrike</span>
+                                <span class="skill-tag">Carbon Black</span>
+                                <span class="skill-tag">Darktrace</span>
+                                <span class="skill-tag">Tenable</span>
+                                <span class="skill-tag">Qualys</span>
+                                <span class="skill-tag">Nessus</span>
+                                <span class="skill-tag">Metasploit</span>
+                                <span class="skill-tag">Burp Suite</span>
+                                <span class="skill-tag">OSSEC</span>
                             </div>
                         </div>
                         
                         <div class="skill-category">
-                            <h4>Offensive Security</h4>
+                            <h4>Cloud Security</h4>
                             <div class="skill-tags">
-                                <span class="skill-tag">Penetration testing</span>
-                                <span class="skill-tag">Red team exercises</span>
-                                <span class="skill-tag">Web application security</span>
-                                <span class="skill-tag">Wireless security</span>
+                                <span class="skill-tag">AWS Security</span>
+                                <span class="skill-tag">Azure Security</span>
+                                <span class="skill-tag">GCP Security</span>
+                                <span class="skill-tag">Cloud SIEM</span>
+                                <span class="skill-tag">CASB</span>
+                                <span class="skill-tag">CSPM</span>
+                                <span class="skill-tag">Container Security</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Network Security</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Firewalls</span>
+                                <span class="skill-tag">IDS/IPS</span>
+                                <span class="skill-tag">VPN</span>
+                                <span class="skill-tag">NAC</span>
+                                <span class="skill-tag">Zero Trust</span>
+                                <span class="skill-tag">DLP</span>
+                                <span class="skill-tag">Network Monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-column">
+                        <div class="skill-category">
+                            <h4>Programming & Scripting</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">C</span>
+                                <span class="skill-tag">PowerShell</span>
+                                <span class="skill-tag">Bash</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">ASP.NET</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Security Frameworks</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">NIST</span>
+                                <span class="skill-tag">ISO 27001</span>
+                                <span class="skill-tag">MITRE ATT&CK</span>
+                                <span class="skill-tag">CIS Controls</span>
+                                <span class="skill-tag">OWASP</span>
+                                <span class="skill-tag">PCI DSS</span>
+                                <span class="skill-tag">GDPR</span>
                             </div>
                         </div>
                         
                         <div class="skill-category">
                             <h4>Security Operations</h4>
                             <div class="skill-tags">
-                                <span class="skill-tag">SOC leadership</span>
-                                <span class="skill-tag">Incident response</span>
-                                <span class="skill-tag">Threat hunting</span>
-                                <span class="skill-tag">Alert triage</span>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-category">
-                            <h4>Data Analytics & Automation</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Security visualization</span>
-                                <span class="skill-tag">SOAR implementation</span>
-                                <span class="skill-tag">Detection rules</span>
-                                <span class="skill-tag">Security metrics</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-column">
-                        <h3>Programming Languages</h3>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>C</span>
-                                <span>57.77%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 57.77%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Python</span>
-                                <span>14.46%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 14.46%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>HTML</span>
-                                <span>10.92%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 10.92%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>PHP</span>
-                                <span>8.11%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 8.11%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>PowerShell</span>
-                                <span>5.06%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 5.06%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>ASP.NET</span>
-                                <span>3.66%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 3.66%"></div>
+                                <span class="skill-tag">Incident Response</span>
+                                <span class="skill-tag">Threat Hunting</span>
+                                <span class="skill-tag">Digital Forensics</span>
+                                <span class="skill-tag">Malware Analysis</span>
+                                <span class="skill-tag">Log Analysis</span>
+                                <span class="skill-tag">Security Monitoring</span>
+                                <span class="skill-tag">Threat Intelligence</span>
                             </div>
                         </div>
                     </div>
@@ -916,177 +906,201 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Projects Section -->
-    <section id="projects" class="section">
+    <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title">Projects & Case Studies</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Enterprise SIEM Migration & Optimization</h3>
-                        <h4>Challenge</h4>
-                        <p>A global financial institution needed to transition from legacy SIEM to a modern solution (Splunk, Sentinel, CrowdStrike) without security gaps during migration, while also optimizing existing deployments.</p>
-                        <h4>Approach</h4>
-                        <p>I developed a phased migration strategy with parallel operations and comprehensive testing at each stage. For existing systems, I focused on advanced rule tuning and integration with threat intelligence feeds.</p>
-                        <h4>Outcome</h4>
-                        <p>Successfully migrated 500+ data sources with zero security incidents during transition. Improved detection capabilities by 40% and reduced false positives by 60% across multiple SIEM platforms.</p>
+                        <h3>Enterprise SIEM Implementation</h3>
+                        <p>Led the design and implementation of an enterprise SIEM solution using Splunk, Microsoft Sentinel, and CrowdStrike for a global financial services organization. The project involved integrating multiple data sources, creating custom detection rules, and establishing automated response workflows.</p>
+                        
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Reduced mean time to detect threats by 65%</li>
+                            <li>Implemented custom detection rules for industry-specific threats</li>
+                            <li>Integrated threat intelligence feeds to enhance proactive detection</li>
+                            <li>Optimized data ingestion to reduce costs while maintaining visibility</li>
+                        </ul>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>SOC Optimization</h3>
-                        <h4>Challenge</h4>
-                        <p>A manufacturing company's SOC was overwhelmed with alerts and struggling with response times.</p>
-                        <h4>Approach</h4>
-                        <p>I implemented automated triage workflows and refined detection rules based on threat intelligence and historical data.</p>
-                        <h4>Outcome</h4>
-                        <p>Reduced mean time to detect (MTTD) from 6 hours to 45 minutes and mean time to respond (MTTR) from 24 hours to 4 hours.</p>
+                        <h3>Cloud Security Transformation</h3>
+                        <p>Designed and implemented a comprehensive cloud security framework for a healthcare organization migrating critical workloads to AWS and Azure. The project focused on maintaining compliance with HIPAA and GDPR while enabling secure cloud adoption.</p>
+                        
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Developed cloud security architecture aligned with zero trust principles</li>
+                            <li>Implemented automated compliance monitoring and remediation</li>
+                            <li>Created secure CI/CD pipelines with integrated security testing</li>
+                            <li>Established cloud security governance framework and policies</li>
+                        </ul>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Security Posture Assessment</h3>
-                        <h4>Challenge</h4>
-                        <p>A healthcare organization needed to evaluate their security maturity against industry standards and regulatory requirements.</p>
-                        <h4>Approach</h4>
-                        <p>I conducted a comprehensive assessment using a custom framework based on NIST CSF, ISO 27001, and healthcare-specific controls.</p>
-                        <h4>Outcome</h4>
-                        <p>Identified 23 critical gaps and developed a prioritized roadmap that achieved compliance within 6 months while strengthening overall security.</p>
+                        <h3>SOC Optimization Program</h3>
+                        <p>Led a comprehensive optimization program for a 24/7 Security Operations Center supporting multiple global clients. The initiative focused on enhancing detection capabilities, streamlining workflows, and improving analyst effectiveness.</p>
+                        
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Reduced false positive rate by 78% through tuning and machine learning</li>
+                            <li>Implemented SOAR platform to automate routine investigation tasks</li>
+                            <li>Developed analyst training program that improved case handling time by 40%</li>
+                            <li>Created metrics framework to measure and demonstrate SOC effectiveness</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Certifications Section -->
-    <section id="certifications" class="section">
+    <section class="section" id="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications & Education</h2>
+            <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-category">
-                    <h3>Education</h3>
-                    <ul>
-                        <li>Bachelor of Science in Computer Security and Ethical Hacking - Leeds Metropolitan University (2010-2014)</li>
-                    </ul>
-                </div>
-                
                 <div class="certification-category">
                     <h3>Offensive Security</h3>
                     <ul>
-                        <li>Offensive Security Certified Professional (OSCP) - 2014</li>
-                        <li>Offensive Security Wireless Professional (OSWP) - 2014</li>
-                        <li>Offensive Security Web Application Professional (OSWE) - 2015</li>
-                    </ul>
-                </div>
-                
-                <div class="certification-category">
-                    <h3>CompTIA</h3>
-                    <ul>
-                        <li>CompTIA Linux+ - 2016</li>
-                        <li>CompTIA Network+ - 2019</li>
-                        <li>CompTIA PenTest+ - 2020</li>
-                        <li>CompTIA Security+ - 2020</li>
+                        <li>Offensive Security Certified Professional (OSCP)</li>
+                        <li>Offensive Security Wireless Professional (OSWP)</li>
+                        <li>Offensive Security Experienced Penetration Tester (OSEP)</li>
                     </ul>
                 </div>
                 
                 <div class="certification-category">
                     <h3>ISC²</h3>
                     <ul>
-                        <li>CISSP Certification - 2017</li>
+                        <li>Certified Information Systems Security Professional (CISSP)</li>
+                        <li>Certified Cloud Security Professional (CCSP)</li>
+                        <li>Systems Security Certified Practitioner (SSCP)</li>
                     </ul>
                 </div>
                 
                 <div class="certification-category">
-                    <h3>Splunk</h3>
+                    <h3>SANS/GIAC</h3>
                     <ul>
-                        <li>Splunk Architect - 2017</li>
-                        <li>Splunk Admin - 2017</li>
-                        <li>Splunk Accredited Consultant - 2018</li>
+                        <li>GIAC Security Essentials (GSEC)</li>
+                        <li>GIAC Certified Incident Handler (GCIH)</li>
+                        <li>GIAC Certified Forensic Analyst (GCFA)</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-category">
+                    <h3>CompTIA</h3>
+                    <ul>
+                        <li>CompTIA Security+</li>
+                        <li>CompTIA PenTest+</li>
+                        <li>CompTIA CySA+</li>
+                        <li>CompTIA CASP+</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-category">
+                    <h3>Vendor-Specific</h3>
+                    <ul>
+                        <li>Splunk Certified Architect</li>
+                        <li>Microsoft Certified: Azure Security Engineer Associate</li>
+                        <li>AWS Certified Security - Specialty</li>
+                        <li>Certified Ethical Hacker (CEH)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section class="section" id="contact">
         <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="card">
-                <p style="text-align: center; margin-bottom: 50px;">
-                    I'm always open to discussing new projects, security challenges, or opportunities to collaborate.
-                </p>
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I'm always open to discussing new projects, security challenges, or opportunities to collaborate.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/secnnet" class="social-link" target="_blank">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <span class="social-name">GitHub</span>
+                </a>
                 
-                <div class="social-links">
-                    <a href="https://github.com/secnnet" target="_blank" class="social-link">
-                        <div class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </div>
-                        <span class="social-name">GitHub</span>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/graineb/" target="_blank" class="social-link">
-                        <div class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </div>
-                        <span class="social-name">LinkedIn</span>
-                    </a>
-                    
-                    <a href="mailto:bilel@sent.com" class="social-link">
-                        <div class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
-                            </svg>
-                        </div>
-                        <span class="social-name">Email</span>
-                    </a>
-                    
-                    <a href="https://medium.com/@bil3l" target="_blank" class="social-link">
-                        <div class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/>
-                            </svg>
-                        </div>
-                        <span class="social-name">Medium</span>
-                    </a>
-                </div>
+                <a href="https://linkedin.com/in/bilel" class="social-link" target="_blank">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </div>
+                    <span class="social-name">LinkedIn</span>
+                </a>
+                
+                <a href="mailto:contact@example.com" class="social-link">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                    </div>
+                    <span class="social-name">Email</span>
+                </a>
+                
+                <a href="https://medium.com/@bil3l" class="social-link" target="_blank">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg>
+                    </div>
+                    <span class="social-name">Medium</span>
+                </a>
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="https://github.com/secnnet" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/graineb/" target="_blank">LinkedIn</a>
-                <a href="https://medium.com/@bil3l" target="_blank">Medium</a>
+                <a href="#about">About</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
             </div>
-            <p>© 2025 Bilel Graine</p>
+            <p>&copy; 2025 Bilel. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Navigation -->
     <script>
+        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
             
             navToggle.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
             });
             
-            // Close menu when clicking on a nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
+            // Close menu when clicking a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
                     navMenu.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Adjust for fixed navbar
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
