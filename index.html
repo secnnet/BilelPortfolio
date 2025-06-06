@@ -3,1133 +3,715 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilel's Portfolio</title>
+    <title>Bilel - Cybersecurity Portfolio</title>
     <style>
         :root {
-            --primary: #003366;
-            --secondary: #f5f5f5;
-            --accent: #0056b3;
-            --text: #333333;
-            --background: #f0f2f5;
-            --card-bg: #ffffff;
-            --section-bg: #ffffff;
+            --primary-dark: #0A192F; /* Deep Navy */
+            --secondary-dark: #112240; /* Dark Slate */
+            --accent-teal: #64FFDA;
+            --text-light: #E6F1FF;
+            --text-medium: #8892B0;
+            --card-bg: rgba(255, 255, 255, 0.05); /* Subtle card background */
+            --border-color: rgba(100, 255, 218, 0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Calibri', 'San Francisco', 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-medium);
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--background);
-            padding-top: 70px; /* Added to account for fixed navbar */
+            overflow-x: hidden;
         }
-        
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        a:hover {
-            color: var(--accent);
-        }
-        
-        /* Navigation Bar Styles */
-        .navbar {
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            background-color: rgba(10, 25, 47, 0.85); /* Slightly transparent */
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 0 20px;
+            transition: top 0.3s;
         }
-        
-        .nav-container {
+
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 70px;
         }
-        
+
         .nav-logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--accent-teal);
         }
-        
-        .nav-menu {
-            display: flex;
+
+        .nav-links {
             list-style: none;
+            display: flex;
         }
-        
-        .nav-item {
+
+        .nav-links li {
             margin-left: 30px;
         }
-        
-        .nav-link {
-            color: var(--text);
-            font-weight: 500;
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
         }
-        
-        .nav-link:hover {
-            color: var(--primary);
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-teal);
         }
         
         .nav-toggle {
             display: none;
+            font-size: 1.5rem;
+            color: var(--accent-teal);
             cursor: pointer;
-            font-size: 1.5rem;
         }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .section {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 30px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .hero h2 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-        
-        .hero-tagline {
-            font-size: 1.3rem;
-            max-width: 900px; /* Increased from 700px to accommodate longer text */
-            margin: 0 auto;
-            opacity: 0.9;
-            white-space: nowrap; /* Prevent line breaks */
-            overflow: hidden;
-            text-overflow: ellipsis; /* Add ellipsis if text overflows */
-        }
-        
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .about-container {
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
-        
-        .about-text {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        .about-sidebar {
-            flex: 1;
-            min-width: 250px;
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .about-sidebar h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .about-sidebar ul {
-            list-style-type: none;
-            margin-bottom: 20px;
-        }
-        
-        .about-sidebar li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .about-sidebar li::before {
-            content: "•";
-            display: inline-block;
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        /* Updated expertise grid for uniform boxes */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
-            gap: 25px;
-        }
-        
-        .expertise-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 300px; /* Fixed height for all cards */
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; /* Prevent content overflow */
-        }
-        
-        .expertise-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .expertise-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary);
-        }
-        
-        .expertise-card p {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            flex-grow: 1; /* Allow paragraph to fill remaining space */
-            overflow-y: auto; /* Add scrolling if content is too long */
-            padding-right: 5px; /* Space for scrollbar */
-        }
-        
-        /* Custom scrollbar for expertise cards */
-        .expertise-card p::-webkit-scrollbar {
-            width: 4px;
-        }
-        
-        .expertise-card p::-webkit-scrollbar-track {
-            background: var(--secondary);
-            border-radius: 10px;
-        }
-        
-        .expertise-card p::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        
-        .timeline {
+
+        .hero-content {
             max-width: 800px;
-            margin: 0 auto;
         }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
+
+        .hero-greeting {
+            color: var(--accent-teal);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+        }
+
+        .hero-name {
+            font-size: clamp(40px, 8vw, 70px);
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero-title {
+            font-size: clamp(30px, 6vw, 60px);
+            color: var(--text-medium);
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            max-width: 550px;
             margin-bottom: 40px;
+            color: var(--text-medium);
         }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            height: 16px;
-            width: 16px;
-            border-radius: 50%;
-            background-color: var(--primary);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 24px;
-            bottom: -40px;
-            width: 2px;
-            background-color: var(--primary);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
-        }
-        
-        .timeline-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-item .period {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .timeline-item ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        
-        .timeline-item li {
-            margin-bottom: 5px;
-        }
-        
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .skills-column {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skills-column h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-        
-        .skill-category {
-            margin-bottom: 30px;
-        }
-        
-        .skill-category h4 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill-tag {
-            background-color: var(--section-bg);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background-color: var(--secondary);
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 5px;
-        }
-        
-        .skill-item {
-            margin-bottom: 15px;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .project-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-content {
-            padding: 20px;
-        }
-        
-        .project-card h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .project-card h4 {
-            color: var(--primary);
-            margin-top: 15px;
-            margin-bottom: 5px;
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: var(--accent-teal);
+            border: 1px solid var(--accent-teal);
+            border-radius: 4px;
+            text-decoration: none;
             font-size: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+        }
+
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        /* General Section Styling */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            border-radius: 2px;
         }
         
-        /* Updated certifications grid to ensure balanced 2x2 layout */
-        .certifications-grid {
+        /* About Section */
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Changed from 3 to 2 columns */
-            gap: 25px;
-            margin-bottom: 20px;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+            align-items: center;
         }
-        
-        .certification-category {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            height: 350px; /* Fixed height for all boxes */
-            overflow-y: auto; /* Allow scrolling for content that exceeds the height */
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .certification-category h3 {
-            color: var(--primary);
+
+        .about-text p {
             margin-bottom: 15px;
-            font-size: 1.3rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 10px;
-            position: sticky;
-            top: 0;
-            background-color: var(--card-bg);
+        }
+        
+        .about-image-container {
+            position: relative;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 4px;
+            position: relative;
             z-index: 1;
         }
         
-        .certification-category ul {
-            list-style-type: none;
-            margin-left: 0;
-            padding-left: 0;
+        .about-image-container::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            border: 2px solid var(--accent-teal);
+            top: 15px;
+            left: 15px;
+            z-index: 0;
+            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        }
+
+        .about-image-container:hover::after {
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Expertise Section */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .expertise-card {
+            background-color: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-teal);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .expertise-card h3 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Experience Section - Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--accent-teal);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--primary-dark);
+            border: 3px solid var(--accent-teal);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 25px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--secondary-dark);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--secondary-dark);
+        }
+
+        .timeline-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 25px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--secondary-dark);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--secondary-dark) transparent transparent;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--secondary-dark);
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .certification-category li {
+        .timeline-content h3 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content .period {
+            color: var(--accent-teal);
+            font-size: 0.9rem;
             margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .certification-card {
+            background-color: var(--secondary-dark);
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .certification-card h3 {
+            color: var(--accent-teal);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .certification-card ul {
+            list-style: none;
+        }
+
+        .certification-card li {
+            margin-bottom: 8px;
             padding-left: 20px;
             position: relative;
         }
-        
-        .certification-category li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
+
+        .certification-card li::before {
+            content: '›';
             position: absolute;
             left: 0;
-            top: 0;
+            color: var(--accent-teal);
         }
-        
-        .contact {
-            text-align: center;
-        }
-        
-        .contact p {
+
+        /* Contact Section */
+        .contact-content p {
             max-width: 600px;
-            margin: 0 auto 50px; /* Increased bottom margin from 30px to 50px */
+            margin: 0 auto 40px auto;
             text-align: center;
-            font-size: 1.1rem; /* Slightly larger text */
-            line-height: 1.8; /* Increased line height for better readability */
+            font-size: 1.1rem;
         }
-        
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px; /* Increased gap between social links */
-            margin-top: 30px; /* Added top margin */
-            margin-bottom: 40px;
-        }
-        
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 120px;
+
+        .contact-btn-container {
             text-align: center;
-            transition: transform 0.3s ease;
         }
-        
-        .social-link:hover {
-            transform: translateY(-5px);
-        }
-        
-        .social-icon {
-            width: 60px; /* Increased size from 50px to 60px */
-            height: 60px; /* Increased size from 50px to 60px */
-            margin-bottom: 15px; /* Increased bottom margin from 10px to 15px */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .social-icon svg {
-            width: 28px; /* Increased size from 24px to 28px */
-            height: 28px; /* Increased size from 24px to 28px */
-            fill: white;
-        }
-        
-        .social-name {
-            font-weight: 500;
-            color: var(--text);
-            font-size: 1.05rem; /* Slightly larger text */
-        }
-        
-        .cv-request {
-            background-color: var(--section-bg);
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .cv-request h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .cv-request p {
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: var(--accent);
-            color: white;
-        }
-        
+
+        /* Footer */
         footer {
-            background-color: #333;
-            color: white;
             padding: 30px 0;
             text-align: center;
-            margin-top: 60px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
         }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+
+        footer a {
+            color: var(--accent-teal);
+            text-decoration: none;
         }
-        
-        .footer-links a {
-            color: white;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        
-        @media (max-width: 1200px) {
-            .certifications-grid {
-                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on medium screens */
-            }
-            
-            .hero-tagline {
-                white-space: nowrap; /* Keep nowrap even on smaller screens */
-                font-size: 1.2rem;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .expertise-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
-            }
-            
-            .hero-tagline {
-                font-size: 1.1rem; /* Slightly smaller font on medium screens */
-            }
-        }
-        
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
+            .nav-links {
+                display: none;
                 flex-direction: column;
-                background-color: white;
                 width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                padding: 10px 0;
-            }
-            
-            .nav-menu.active {
+                position: absolute;
+                top: 70px;
                 left: 0;
+                background-color: rgba(10, 25, 47, 0.95);
             }
-            
-            .nav-item {
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
                 margin: 15px 0;
+                text-align: center;
             }
-            
             .nav-toggle {
                 display: block;
             }
-            
+
             .hero {
-                padding: 80px 0;
+                text-align: center;
             }
-            
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero-content {
+                padding: 0 10px;
             }
-            
-            .hero h2 {
-                font-size: 1.3rem;
-            }
-            
             .hero-tagline {
-                font-size: 1rem; /* Even smaller font on mobile */
-                padding: 0 10px; /* Add some padding on very small screens */
+                margin-left: auto;
+                margin-right: auto;
             }
-            
-            .section {
-                padding: 40px 0;
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
-            
-            .section-title {
-                font-size: 1.8rem;
+            .about-image-container {
+                order: -1; /* Image on top on mobile */
             }
-            
+
+            .timeline::after {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+            }
+            .timeline-item.right, .timeline-item.left {
+                left: 0;
+            }
+            .timeline-item::after {
+                left: 10px;
+            }
+            .timeline-item.left::before, .timeline-item.right::before {
+                left: 40px;
+                border-color: transparent var(--secondary-dark) transparent transparent;
+                border-width: 10px 10px 10px 0;
+            }
             .certifications-grid {
-                grid-template-columns: 1fr; /* 1 column on small screens */
-            }
-            
-            .expertise-grid {
-                grid-template-columns: 1fr; /* 1 column on small screens */
-            }
-            
-            .social-links {
-                gap: 20px;
+                grid-template-columns: 1fr;
             }
         }
-        
-        @media (max-width: 480px) {
-            .hero-tagline {
-                /* Only on very small mobile screens, allow wrapping if absolutely necessary */
-                white-space: normal;
-                font-size: 0.9rem;
-            }
-        }
+
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav id="navbar">
+        <div class="container">
             <div class="nav-logo">Bilel</div>
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#expertise" class="nav-link">Expertise</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-toggle" id="navToggle">☰</div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Hi, I'm Bilel</h1>
-            <h2>Security Architect & Penetration Tester</h2>
-            <p class="hero-tagline">Transforming security vulnerabilities into robust defenses for enterprise organizations</p>
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">Hi, my name is</p>
+            <h1 class="hero-name">Bilel.</h1>
+            <h2 class="hero-title">I build things for security.</h2>
+            <p class="hero-tagline">
+                I'm a Security Architect & Penetration Tester specializing in uncovering vulnerabilities and designing robust defenses for enterprise organizations.
+            </p>
+            <a href="#contact" class="btn">Get In Touch</a>
         </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-container">
-                <div class="about-text card">
-                    <p>With over 12 years of experience at organizations like Microsoft, IBM, Splunk, and BlueVoyant, I've built a career focused on identifying vulnerabilities and implementing effective security solutions. My expertise spans MSSP and MDR services, having worked across the EU, US, Asia, and UAE with clients ranging from financial institutions to manufacturing giants.</p>
-                    <br>
-                    <p>I specialize in translating complex security challenges into practical, implementable solutions. My approach combines deep technical knowledge with business acumen, ensuring security measures enhance rather than hinder operations. I've led SIEM implementations, SOC operations, and threat hunting initiatives that have measurably improved clients' security postures.</p>
-                    <br>
-                    <p>When I'm not immersed in cybersecurity, I train in Brazilian Jiu-Jitsu—a discipline that, like security work, requires strategy, patience, and adaptability. I also enjoy fishing and spearfishing, activities that provide both the thrill of the hunt and moments of reflection.</p>
-                </div>
-                <div class="about-sidebar">
-                    <h3>Location</h3>
-                    <p>England, UK</p>
-                    
-                    <h3>Core Focus Areas</h3>
-                    <ul>
-                        <li>Security Architecture</li>
-                        <li>Penetration Testing</li>
-                        <li>SIEM Implementation</li>
-                        <li>SOC Operations</li>
-                        <li>Threat Hunting</li>
-                    </ul>
-                    
-                    <h3>Languages</h3>
-                    <ul>
-                        <li>English (Fluent)</li>
-                        <li>French (Fluent)</li>
-                        <li>Arabic (Native)</li>
-                    </ul>
+    <main>
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>With over 12 years of experience at organizations like Microsoft, IBM, Splunk, and BlueVoyant, I've built a career focused on identifying vulnerabilities and implementing effective security solutions. My expertise spans MSSP and MDR services, having worked across the EU, US, Asia, and UAE with clients ranging from financial institutions to manufacturing giants.</p>
+                        <p>I specialize in translating complex security challenges into practical, implementable solutions. My approach combines deep technical knowledge with business acumen, ensuring security measures enhance rather than hinder operations. I've led SIEM implementations, SOC operations, and threat hunting initiatives that have measurably improved clients' security postures.</p>
+                        <p>When I'm not immersed in cybersecurity, I train in Brazilian Jiu-Jitsu—a discipline that, like security work, requires strategy, patience, and adaptability. I also enjoy fishing and spearfishing, activities that provide both the thrill of the hunt and moments of reflection.</p>
+                        <p>Key focus areas: Security Architecture, Penetration Testing, SIEM Implementation, SOC Operations, Threat Hunting.</p>
+                    </div>
+                    <div class="about-image-container">
+                        <!-- Placeholder for an image. User can replace this. -->
+                        <img src="https://via.placeholder.com/300x300.png?text=Bilel" alt="Bilel - Security Professional" class="about-image">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Expertise Section -->
-    <section class="section" id="expertise">
-        <div class="container">
-            <h2 class="section-title">Areas of Expertise</h2>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <h3>Security Architecture</h3>
-                    <p>I design security infrastructures that balance protection with practicality. My experience spans from small-scale deployments to enterprise-wide solutions across multiple industries and regulatory environments.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>Penetration Testing</h3>
-                    <p>Finding vulnerabilities before attackers do is my specialty. I've conducted numerous penetration tests across diverse environments, helping organizations understand and address their security gaps before they become problems.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>SIEM Implementation</h3>
-                    <p>I've led Splunk and Microsoft Sentinel deployments that transform raw data into actionable security intelligence. My implementations focus on practical detection capabilities that catch real threats without overwhelming teams with false positives.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>SOC Operations</h3>
-                    <p>Building and leading effective security operations centers requires both technical knowledge and people skills. I've established SOC teams and processes that consistently deliver results, even under pressure.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>Threat Hunting</h3>
-                    <p>Proactive threat detection is essential in today's landscape. I develop and execute threat hunting programs that uncover hidden adversaries and strengthen overall security posture through continuous improvement.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>Security Compliance</h3>
-                    <p>Guiding organizations through complex regulatory requirements including GDPR, PCI DSS, ISO 27001, and industry-specific frameworks. Translating compliance needs into practical security controls.</p>
+        <section class="section" id="expertise">
+            <div class="container">
+                <h2 class="section-title">Areas of Expertise</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3>Security Architecture</h3>
+                        <p>Designing and implementing robust security infrastructures that align with business objectives and mitigate risks effectively.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Penetration Testing</h3>
+                        <p>Conducting thorough penetration tests to identify vulnerabilities in networks, applications, and cloud environments.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>SIEM Implementation</h3>
+                        <p>Deploying and optimizing SIEM solutions (Splunk, Sentinel) for advanced threat detection and incident response.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>SOC Operations</h3>
+                        <p>Building and leading high-performing Security Operations Centers, focusing on efficiency and rapid response.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Threat Hunting</h3>
+                        <p>Proactively searching for and neutralizing advanced threats that may evade traditional security defenses.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Security Compliance</h3>
+                        <p>Guiding organizations through GDPR, PCI DSS, ISO 27001, and other regulatory frameworks to ensure adherence.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section class="section" id="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="card">
-                <h3>Core Competencies</h3>
+        <section class="section" id="experience">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>Security Architecture & Engineering</h3>
-                        <div class="period">Enterprise & Cloud Environments</div>
-                        <ul>
-                            <li>Designed and implemented security architectures for organizations across financial services, healthcare, and manufacturing sectors</li>
-                            <li>Led security transformation initiatives for cloud migration projects, ensuring security controls were embedded throughout the process</li>
-                            <li>Developed security reference architectures that balanced protection with operational efficiency</li>
-                        </ul>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>Senior Security Architect</h3>
+                            <p class="period">BlueVoyant | 2021 - Present</p>
+                            <p>Lead security architecture for key clients, design MDR solutions, and oversee complex Splunk/Sentinel deployments.</p>
+                        </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <h3>SIEM Implementation & Optimization</h3>
-                        <div class="period">Splunk, Microsoft Sentinel, QRadar</div>
-                        <ul>
-                            <li>Implemented enterprise-scale SIEM solutions for global organizations, including custom use case development</li>
-                            <li>Optimized existing deployments to reduce false positives and improve detection capabilities</li>
-                            <li>Created advanced correlation rules and dashboards for security operations teams</li>
-                        </ul>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>Cybersecurity Consultant</h3>
+                            <p class="period">IBM | 2018 - 2021</p>
+                            <p>Provided expert consulting on SIEM, SOC optimization, and threat intelligence for enterprise clients.</p>
+                        </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <h3>SOC Leadership & Operations</h3>
-                        <div class="period">24/7 Security Monitoring</div>
-                        <ul>
-                            <li>Managed SOC teams responsible for monitoring critical infrastructure across multiple industries</li>
-                            <li>Established incident response procedures and playbooks that reduced mean time to detect and respond</li>
-                            <li>Implemented threat intelligence integration to enhance proactive threat hunting capabilities</li>
-                        </ul>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>Splunk Professional Services</h3>
+                            <p class="period">Splunk | 2016 - 2018</p>
+                            <p>Delivered Splunk implementation, administration, and architecture services to a wide range of customers.</p>
+                        </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <h3>Penetration Testing & Vulnerability Management</h3>
-                        <div class="period">Internal & External Security Assessments</div>
-                        <ul>
-                            <li>Conducted comprehensive penetration tests against network infrastructure, web applications, and cloud environments</li>
-                            <li>Developed vulnerability management programs that prioritized remediation based on risk</li>
-                            <li>Provided technical mentorship to junior security analysts on assessment methodologies</li>
-                        </ul>
+                     <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>Security Analyst</h3>
+                            <p class="period">Microsoft | 2014 - 2016</p>
+                            <p>Focused on threat detection, incident response, and vulnerability management within Microsoft's security operations.</p>
+                        </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <h3>Security Program Development</h3>
-                        <div class="period">Strategy & Governance</div>
-                        <ul>
-                            <li>Created comprehensive security programs aligned with business objectives and risk tolerance</li>
-                            <li>Developed security policies, standards, and procedures that met regulatory requirements</li>
-                            <li>Established security metrics and KPIs to measure program effectiveness and demonstrate value</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="cv-request">
-                    <h3>Interested in my detailed experience?</h3>
-                    <p>For a comprehensive overview of my professional background, including specific roles and achievements, please request my full CV.</p>
-                    <a href="#contact" class="btn">Request Full CV</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="card">
-                <div class="skills-container">
-                    <div class="skills-column">
-                        <div class="skill-category">
-                            <h4>Security Tools & Platforms</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Splunk</span>
-                                <span class="skill-tag">Microsoft Sentinel</span>
-                                <span class="skill-tag">QRadar</span>
-                                <span class="skill-tag">CrowdStrike</span>
-                                <span class="skill-tag">Carbon Black</span>
-                                <span class="skill-tag">Darktrace</span>
-                                <span class="skill-tag">Tenable</span>
-                                <span class="skill-tag">Qualys</span>
-                                <span class="skill-tag">Nessus</span>
-                                <span class="skill-tag">Metasploit</span>
-                                <span class="skill-tag">Burp Suite</span>
-                                <span class="skill-tag">OSSEC</span>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-category">
-                            <h4>Cloud Security</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">AWS Security</span>
-                                <span class="skill-tag">Azure Security</span>
-                                <span class="skill-tag">GCP Security</span>
-                                <span class="skill-tag">Cloud SIEM</span>
-                                <span class="skill-tag">CASB</span>
-                                <span class="skill-tag">CSPM</span>
-                                <span class="skill-tag">Container Security</span>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-category">
-                            <h4>Network Security</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Firewalls</span>
-                                <span class="skill-tag">IDS/IPS</span>
-                                <span class="skill-tag">VPN</span>
-                                <span class="skill-tag">NAC</span>
-                                <span class="skill-tag">Zero Trust</span>
-                                <span class="skill-tag">DLP</span>
-                                <span class="skill-tag">Network Monitoring</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-column">
-                        <div class="skill-category">
-                            <h4>Programming & Scripting</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">C</span>
-                                <span class="skill-tag">PowerShell</span>
-                                <span class="skill-tag">Bash</span>
-                                <span class="skill-tag">SQL</span>
-                                <span class="skill-tag">HTML</span>
-                                <span class="skill-tag">PHP</span>
-                                <span class="skill-tag">ASP.NET</span>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-category">
-                            <h4>Security Frameworks</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">NIST</span>
-                                <span class="skill-tag">ISO 27001</span>
-                                <span class="skill-tag">MITRE ATT&CK</span>
-                                <span class="skill-tag">CIS Controls</span>
-                                <span class="skill-tag">OWASP</span>
-                                <span class="skill-tag">PCI DSS</span>
-                                <span class="skill-tag">GDPR</span>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-category">
-                            <h4>Security Operations</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Incident Response</span>
-                                <span class="skill-tag">Threat Hunting</span>
-                                <span class="skill-tag">Digital Forensics</span>
-                                <span class="skill-tag">Malware Analysis</span>
-                                <span class="skill-tag">Log Analysis</span>
-                                <span class="skill-tag">Security Monitoring</span>
-                                <span class="skill-tag">Threat Intelligence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects & Case Studies</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Enterprise SIEM Implementation</h3>
-                        <p>Led the design and implementation of an enterprise SIEM solution using Splunk, Microsoft Sentinel, and CrowdStrike for a global financial services organization. The project involved integrating multiple data sources, creating custom detection rules, and establishing automated response workflows.</p>
-                        
-                        <h4>Key Achievements:</h4>
+        <section class="section" id="certifications">
+            <div class="container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <h3>OffSec</h3>
                         <ul>
-                            <li>Reduced mean time to detect threats by 65%</li>
-                            <li>Implemented custom detection rules for industry-specific threats</li>
-                            <li>Integrated threat intelligence feeds to enhance proactive detection</li>
-                            <li>Optimized data ingestion to reduce costs while maintaining visibility</li>
+                            <li>Offensive Security Certified Professional – 2014</li>
+                            <li>Offensive Security Wireless Professional – 2014</li>
+                            <li>Offensive Security Web Application Professional – 2015</li>
                         </ul>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Cloud Security Transformation</h3>
-                        <p>Designed and implemented a comprehensive cloud security framework for a healthcare organization migrating critical workloads to AWS and Azure. The project focused on maintaining compliance with HIPAA and GDPR while enabling secure cloud adoption.</p>
-                        
-                        <h4>Key Achievements:</h4>
+                    <div class="certification-card">
+                        <h3>CompTIA</h3>
                         <ul>
-                            <li>Developed cloud security architecture aligned with zero trust principles</li>
-                            <li>Implemented automated compliance monitoring and remediation</li>
-                            <li>Created secure CI/CD pipelines with integrated security testing</li>
-                            <li>Established cloud security governance framework and policies</li>
+                            <li>CompTIA Linux+ – 2016</li>
+                            <li>CompTIA Linux Network Professional – 2019</li>
+                            <li>CompTIA Network+ – 2019</li>
+                            <li>CompTIA Network Vulnerability Assessment Professional – CNVP Stackable Certification – 2019</li>
+                            <li>CompTIA PenTest+ ce Certification – 2020</li>
+                            <li>CompTIA Security+ ce Certification – 2020</li>
+                            <li>CompTIA Security+ – 2020</li>
                         </ul>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>SOC Optimization Program</h3>
-                        <p>Led a comprehensive optimization program for a 24/7 Security Operations Center supporting multiple global clients. The initiative focused on enhancing detection capabilities, streamlining workflows, and improving analyst effectiveness.</p>
-                        
-                        <h4>Key Achievements:</h4>
+                    <div class="certification-card">
+                        <h3>ISC² & Palo Alto</h3>
                         <ul>
-                            <li>Reduced false positive rate by 78% through tuning and machine learning</li>
-                            <li>Implemented SOAR platform to automate routine investigation tasks</li>
-                            <li>Developed analyst training program that improved case handling time by 40%</li>
-                            <li>Created metrics framework to measure and demonstrate SOC effectiveness</li>
+                            <li>CISSP Certification – 2017</li>
+                            <li>Palo Alto Networks Accredited Configuration Engineer (ACE) – 2016</li>
+                        </ul>
+                    </div>
+                    <div class="certification-card">
+                        <h3>Splunk</h3>
+                        <ul>
+                            <li>Splunk Knowledge Objects – Onsite – 2016</li>
+                            <li>Splunk Using Enterprise Security – 2016</li>
+                            <li>Splunk Architect – 2017</li>
+                            <li>Splunk Consultant I – 2017</li>
+                            <li>Splunk Consultant II – 2017</li>
+                            <li>Splunk Admin – 2017</li>
+                            <li>Searching and Reporting with Splunk 6.x – eLearning – 2017</li>
+                            <li>Splunk Accredited Consultant – 2018</li>
+                            <li>Splunk Administration – Virtual – 2018</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Certifications Section -->
-    <section class="section" id="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-category">
-                    <h3>OffSec</h3>
-                    <ul>
-                        <li>Offensive Security Certified Professional – 2014</li>
-                        <li>Offensive Security Wireless Professional – 2014</li>
-                        <li>Offensive Security Web Application Professional – 2015</li>
-                    </ul>
-                </div>
-                
-                <div class="certification-category">
-                    <h3>CompTIA</h3>
-                    <ul>
-                        <li>CompTIA Linux+ – 2016</li>
-                        <li>CompTIA Linux Network Professional – 2019</li>
-                        <li>CompTIA Network+ – 2019</li>
-                        <li>CompTIA Network Vulnerability Assessment Professional – CNVP Stackable Certification – 2019</li>
-                        <li>CompTIA PenTest+ ce Certification – 2020</li>
-                        <li>CompTIA Security+ ce Certification – 2020</li>
-                        <li>CompTIA Security+ – 2020</li>
-                    </ul>
-                </div>
-                
-                <div class="certification-category">
-                    <h3>ISC² & Palo Alto</h3>
-                    <ul>
-                        <li>CISSP Certification – 2017</li>
-                        <li>Palo Alto Networks Accredited Configuration Engineer (ACE) – 2016</li>
-                    </ul>
-                </div>
-                
-                <div class="certification-category">
-                    <h3>Splunk</h3>
-                    <ul>
-                        <li>Splunk Knowledge Objects – Onsite – 2016</li>
-                        <li>Splunk Using Enterprise Security – 2016</li>
-                        <li>Splunk Architect – 2017</li>
-                        <li>Splunk Consultant I – 2017</li>
-                        <li>Splunk Consultant II – 2017</li>
-                        <li>Splunk Admin – 2017</li>
-                        <li>Searching and Reporting with Splunk 6.x – eLearning – 2017</li>
-                        <li>Splunk Accredited Consultant – 2018</li>
-                        <li>Splunk Administration – Virtual – 2018</li>
-                    </ul>
+        <section class="section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <p>I'm always open to discussing new projects, security challenges, or opportunities to collaborate. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="contact-btn-container">
+                         <a href="mailto:your.email@example.com" class="btn">Say Hello</a>
+                         <!-- User should replace your.email@example.com with their actual email -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
-                <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">I'm always open to discussing new projects, security challenges, or opportunities to collaborate.</p>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://github.com/secnnet" class="social-link" target="_blank">
-                    <div class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </div>
-                    <span class="social-name">GitHub</span>
-                </a>
-                
-                <a href="https://linkedin.com/in/bilel" class="social-link" target="_blank">
-                    <div class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </div>
-                    <span class="social-name">LinkedIn</span>
-                </a>
-                
-                <a href="mailto:contact@example.com" class="social-link">
-                    <div class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-                    </div>
-                    <span class="social-name">Email</span>
-                </a>
-                
-                <a href="https://medium.com/@bil3l" class="social-link" target="_blank">
-                    <div class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg>
-                    </div>
-                    <span class="social-name">Medium</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#expertise">Expertise</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <p>&copy; 2025 Bilel. All rights reserved.</p>
+            <p>Designed & Built by Manus AI for Bilel</p>
+            <p><a href="https://github.com/secnnet" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://linkedin.com/in/bilel" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.getElementById('navToggle');
-            const navMenu = document.getElementById('navMenu');
-            
-            navToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-            
-            // Close menu when clicking a nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70, // Adjust for fixed navbar
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
+
+        // Smooth scroll & active link highlighting
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section, header.hero');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 75) { // 70px navbar height + 5px buffer
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Sticky Nav
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Initial active link check
+        // (Simplified for this example, more robust solution might be needed for edge cases)
+        if(window.location.hash) {
+            const currentHash = window.location.hash.substring(1);
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentHash) {
+                    link.classList.add('active');
+                }
+            });
+        } else {
+             // Default to 'About' or first link if no hash
+            if(navLinks.length > 0) navLinks[0].classList.add('active');
+        }
+
     </script>
 </body>
 </html>
