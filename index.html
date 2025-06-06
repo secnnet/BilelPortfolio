@@ -203,28 +203,9 @@
             position: relative;
             z-index: 1;
             box-shadow: 0 5px 15px var(--shadow-color);
+            background-color: var(--card-bg); /* Added background color to hide alt text */
         }
         
-        /* Removed the blue border that was appearing broken */
-        /* .about-image-container::after {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 4px;
-            border: 2px solid var(--accent-teal);
-            top: 15px;
-            left: 15px;
-            z-index: 0;
-            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-        }
-
-        .about-image-container:hover::after {
-            top: 10px;
-            left: 10px;
-        } */
-
         /* Expertise Section */
         .expertise-grid {
             display: grid;
@@ -502,7 +483,7 @@
             <h1 class="hero-name">Bilel.</h1>
             <h2 class="hero-title">I build things for security.</h2>
             <p class="hero-tagline">
-                I'm a Security Architect & Penetration Tester specializing in uncovering vulnerabilities and designing robust defenses for enterprise organizations.
+                I'm a Security Research & Penetration Tester specializing in uncovering vulnerabilities and designing robust defences for enterprise organizations.
             </p>
             <a href="#contact" class="btn">Get In Touch</a>
         </div>
@@ -521,7 +502,7 @@
                     </div>
                     <div class="about-image-container">
                         <!-- Placeholder for an image. User can replace this. -->
-                        <img src="https://via.placeholder.com/300x300.png?text=Bilel" alt="Bilel - Security Professional" class="about-image">
+                        <img src="https://via.placeholder.com/300x300.png?text=" alt="" class="about-image">
                     </div>
                 </div>
             </div>
