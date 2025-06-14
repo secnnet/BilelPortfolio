@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-dark: #0a192f; /* Deep navy blue */
-            --secondary-dark: #112240; /* Slightly lighter navy */
-            --accent-teal: #64ffda; /* Bright teal for accents */
-            --text-light: #ccd6f6; /* Light blue-gray */
-            --text-medium: #8892b0; /* Medium blue-gray */
-            --card-bg: #112240; /* Card background */
-            --border-color: rgba(100, 255, 218, 0.2);
-            --shadow-color: rgba(2, 12, 27, 0.7);
+            --primary-light: #f8f9fa; /* Very light gray */
+            --secondary-light: #e9ecef; /* Slightly darker light gray */
+            --accent-blue: #1e88e5; /* Vibrant blue */
+            --accent-teal: #00bcd4; /* Refreshing teal */
+            --text-dark: #212529; /* Dark gray for text */
+            --text-medium: #495057; /* Medium gray for text */
+            --card-bg: #ffffff; /* Pure white for cards */
+            --border-color: rgba(30, 136, 229, 0.2);
+            --shadow-color: rgba(0, 0, 0, 0.05);
             --section-padding: 100px 0;
         }
 
@@ -27,13 +28,14 @@
 
         body {
             font-family: 'Calibri', 'San Francisco', 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--primary-dark);
+            background-color: var(--primary-light);
             color: var(--text-medium);
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(17, 34, 64, 0.5) 0%, transparent 25%),
-                radial-gradient(circle at 85% 80%, rgba(17, 34, 64, 0.5) 0%, transparent 25%);
+                linear-gradient(120deg, rgba(233,236,239,0.1) 0%, rgba(248,249,250,0.1) 100%),
+                radial-gradient(circle at 10% 20%, rgba(30, 136, 229, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(0, 188, 212, 0.03) 0%, transparent 25%);
         }
 
         .container {
@@ -49,11 +51,12 @@
             left: 0;
             width: 100%;
             padding: 20px 0;
-            background-color: rgba(10, 25, 47, 0.95);
+            background-color: rgba(248, 249, 250, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: top 0.3s;
             box-shadow: 0 2px 10px var(--shadow-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         nav .container {
@@ -65,7 +68,7 @@
         .nav-logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--accent-teal);
+            color: var(--accent-blue);
         }
 
         .nav-links {
@@ -78,24 +81,24 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
             padding: 5px 10px;
-            border-radius: 3px;
+            border-radius: 4px;
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-teal);
-            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-blue);
+            background-color: rgba(30, 136, 229, 0.1);
         }
         
         .nav-toggle {
             display: none;
             font-size: 1.5rem;
-            color: var(--accent-teal);
+            color: var(--accent-blue);
             cursor: pointer;
         }
 
@@ -118,7 +121,7 @@
         }
 
         .hero-greeting {
-            color: var(--accent-teal);
+            color: var(--accent-blue);
             font-size: 1.1rem;
             margin-bottom: 20px;
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
@@ -126,7 +129,7 @@
 
         .hero-name {
             font-size: clamp(40px, 8vw, 80px);
-            color: var(--text-light);
+            color: var(--text-dark);
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.1;
@@ -150,21 +153,22 @@
         .btn {
             display: inline-block;
             padding: 12px 25px;
-            background-color: transparent;
-            color: var(--accent-teal);
-            border: 1px solid var(--accent-teal);
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
             border-radius: 4px;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(30, 136, 229, 0.2);
         }
 
         .btn:hover {
-            background-color: rgba(100, 255, 218, 0.1);
+            background-color: #1976d2;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 6px 12px rgba(30, 136, 229, 0.25);
         }
 
         /* General Section Styling */
@@ -175,7 +179,7 @@
 
         .section-title {
             font-size: 2rem;
-            color: var(--text-light);
+            color: var(--text-dark);
             margin-bottom: 50px;
             text-align: center;
             position: relative;
@@ -190,7 +194,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background-color: var(--accent-teal);
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal));
             border-radius: 2px;
         }
         
@@ -218,13 +222,13 @@
             border-radius: 8px;
             position: relative;
             z-index: 1;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
             aspect-ratio: 1/1;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         /* Expertise Section */
@@ -243,9 +247,9 @@
             background-color: var(--card-bg);
             padding: 35px;
             border-radius: 8px;
-            border-top: 3px solid var(--accent-teal);
+            border-top: 3px solid var(--accent-blue);
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px var(--shadow-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -253,12 +257,12 @@
 
         .expertise-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: var(--accent-teal);
         }
 
         .expertise-card h3 {
-            color: var(--text-light);
+            color: var(--text-dark);
             font-size: 1.4rem;
             margin-bottom: 20px;
             display: flex;
@@ -267,11 +271,11 @@
         }
 
         .expertise-card h3 i {
-            color: var(--accent-teal);
+            color: var(--accent-blue);
             font-size: 1.5rem;
             width: 40px;
             height: 40px;
-            background: rgba(100, 255, 218, 0.1);
+            background: rgba(30, 136, 229, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -295,7 +299,7 @@
             content: '';
             position: absolute;
             width: 3px;
-            background-color: var(--accent-teal);
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-teal));
             top: 0;
             bottom: 0;
             left: 50%;
@@ -316,8 +320,8 @@
             width: 20px;
             height: 20px;
             right: -10px;
-            background-color: var(--primary-dark);
-            border: 3px solid var(--accent-teal);
+            background-color: var(--primary-light);
+            border: 3px solid var(--accent-blue);
             top: 20px;
             border-radius: 50%;
             z-index: 1;
@@ -366,17 +370,18 @@
             background-color: var(--card-bg);
             position: relative;
             border-radius: 8px;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--accent-blue);
         }
         
         .timeline-content h3 {
-            color: var(--text-light);
+            color: var(--text-dark);
             font-size: 1.3rem;
             margin-bottom: 5px;
         }
         
         .timeline-content .period {
-            color: var(--accent-teal);
+            color: var(--accent-blue);
             font-size: 0.9rem;
             margin-bottom: 15px;
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
@@ -394,7 +399,7 @@
             background-color: var(--card-bg);
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px var(--shadow-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-left: 3px solid var(--accent-teal);
         }
 
@@ -450,17 +455,18 @@
             font-size: 0.9rem;
             color: var(--text-medium);
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-            background-color: rgba(10, 25, 47, 0.8);
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            background-color: rgba(248, 249, 250, 0.9);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         footer a {
-            color: var(--accent-teal);
+            color: var(--accent-blue);
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         footer a:hover {
+            color: var(--accent-teal);
             text-decoration: underline;
         }
 
@@ -476,63 +482,20 @@
             margin: 0 10px;
             transition: all 0.3s ease;
             font-size: 1.5rem;
-            color: var(--text-light);
+            color: var(--accent-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 136, 229, 0.1);
         }
         
         .social-links a:hover {
-            color: var(--accent-teal);
+            color: white;
+            background: var(--accent-blue);
             transform: translateY(-3px);
-        }
-
-        /* Decorative elements */
-        .pattern-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(17, 34, 64, 0.3) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(17, 34, 64, 0.3) 0%, transparent 20%);
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(100, 255, 218, 0.05);
-        }
-        
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: -100px;
-        }
-        
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 20%;
-            left: -80px;
-        }
-        
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            top: 40%;
-            right: 30%;
         }
 
         /* Responsive Design */
@@ -554,7 +517,7 @@
                 position: absolute;
                 top: 70px;
                 left: 0;
-                background-color: rgba(10, 25, 47, 0.95);
+                background-color: rgba(248, 249, 250, 0.95);
                 padding: 20px 0;
             }
             .nav-links.active {
@@ -635,6 +598,8 @@
             
             .social-links a {
                 font-size: 1.3rem;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -655,11 +620,6 @@
     </nav>
 
     <header class="hero" id="hero">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
         <div class="hero-content">
             <p class="hero-greeting">Hi, my name is</p>
             <h1 class="hero-name">Bilel.</h1>
@@ -684,7 +644,7 @@
                     </div>
                     <div class="about-image-container">
                         <div class="about-image">
-                            <i class="fas fa-user-shield" style="font-size: 5rem; color: var(--accent-teal); opacity: 0.3;"></i>
+                            <i class="fas fa-user-shield" style="font-size: 5rem; color: var(--accent-blue); opacity: 0.3;"></i>
                         </div>
                     </div>
                 </div>
