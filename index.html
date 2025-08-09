@@ -1,195 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilel Graine – Cybersecurity Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bilel Graine — Cybersecurity (circa 1991)</title>
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #121212;
-        color: #e0e0e0;
-        line-height: 1.6;
-    }
-    header {
-        text-align: center;
-        padding: 40px 20px;
-        background-color: #0a0a0a;
-    }
-    header h1 {
-        font-size: 2.5em;
-        color: #39ff14;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
-    header p {
-        font-size: 1.2em;
-        color: #ccc;
-    }
-    .container {
-        width: 90%;
-        max-width: 1100px;
-        margin: auto;
-        padding: 20px;
-    }
-    h2 {
-        color: #39ff14;
-        border-bottom: 2px solid #39ff14;
-        padding-bottom: 5px;
-        margin-top: 40px;
-        animation: glow 1.5s ease-in-out infinite alternate;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    ul li { margin-bottom: 10px; }
+  :root{
+    --bg:#0b0f0b;
+    --fg:#afff9c;
+    --dim:#82c77a;
+    --accent:#b3ff66;
+  }
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.55 "IBM Plex Mono","VT323","Courier New",Courier,monospace;
+    text-shadow:0 0 6px rgba(179,255,102,.25);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .blink{animation:blink 1s steps(2,end) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hidden{display:none}
 
-    .card {
-        background: #1c1c1c;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease-out;
-    }
-    .card.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* links */
-    a {
-        color: #39ff14;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    a:hover {
-        color: #fff;
-        text-shadow: 0 0 10px #39ff14;
-    }
-
-    /* subtle button-style link for resume */
-    .link-btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 10px 14px;
-        border: 1px solid #39ff14;
-        border-radius: 8px;
-        background: transparent;
-        color: #39ff14;
-        font-weight: 700;
-        box-shadow: 0 0 10px rgba(57,255,20,.18);
-    }
-    .link-btn:hover {
-        background: #39ff14; color: #121212; text-shadow: none;
-        box-shadow: 0 0 18px rgba(57,255,20,.28);
-    }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #0a0a0a;
-        margin-top: 40px;
-    }
-    footer a { margin: 0 10px; font-size: 1.5em; }
-
-    @keyframes glow {
-        from { text-shadow: 0 0 5px #39ff14; }
-        to   { text-shadow: 0 0 20px #39ff14, 0 0 30px #39ff14; }
-    }
+  /* CRT container */
+  .crt{
+    width:min(960px,95vw);
+    margin:20px auto;
+    padding:18px 16px;
+    border:2px solid var(--fg);
+    box-shadow:0 0 0 4px #081108 inset, 0 0 32px rgba(179,255,102,.18);
+    background:
+      linear-gradient(rgba(255,255,255,.03),rgba(0,0,0,.03)),
+      repeating-linear-gradient(0deg, rgba(160,255,120,.06) 0 2px, transparent 2px 4px);
+  }
+  .hdr{display:flex; align-items:center; gap:.6rem; margin-bottom:10px}
+  .lamp{width:10px;height:10px;border:1px solid var(--fg);border-radius:50%}
+  .lamp.on{background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  .title{white-space:nowrap; overflow:hidden}
+  pre, .box{margin:14px 0}
+  .box{padding:10px 12px;border:1px dashed var(--dim)}
+  h2{margin:0 0 6px 0; font-size:1rem; letter-spacing:.06em; color:var(--accent)}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{color:#fff; text-shadow:0 0 10px var(--accent)}
+  .cols{display:grid; grid-template-columns:1fr; gap:12px}
+  @media(min-width:760px){ .cols{grid-template-columns:1fr 1fr 1fr} }
+  ul{list-style:none; padding-left:0; margin:8px 0 0}
+  ul li::before{content:"> "; color:var(--dim)}
+  .muted{color:var(--dim)}
+  .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .chip{border:1px dashed var(--dim); padding:6px 10px}
+  .mono{font-family:inherit}
 </style>
 </head>
 <body>
 
-<header>
-    <h1>Bilel Graine</h1>
-    <p>Cybersecurity Leader – Detection, Response, Engineering, Cloud & Offensive Security</p>
-</header>
+<!-- Intro screen -->
+<div id="intro">
+  <pre>
+[BOOTING SYSTEM...]
+[LOADING KERNEL.............OK]
+[INIT COMPLETE]
 
-<div class="container">
-    <div class="card">
-        <h2>About Me</h2>
-        <p>I’m a cybersecurity professional with expertise spanning SOC leadership, threat detection, incident response, penetration testing, and security architecture. I’ve led global deployments, reduced costs, improved detection times, and delivered measurable security improvements across complex infrastructures.</p>
-    </div>
-
-    <div class="card">
-        <h2>Core Expertise</h2>
-        <ul>
-            <li>Security Operations & SOC Management</li>
-            <li>Threat Detection & Incident Response</li>
-            <li>Penetration Testing & Red Teaming (OSCP methodology)</li>
-            <li>SIEM & XDR/EDR Engineering (Sentinel, Splunk, Chronicle, Defender, CrowdStrike, Cortex XDR)</li>
-            <li>Cloud & Network Security (Azure, AWS, GCP, Zero Trust)</li>
-            <li>SOAR Automation (XSOAR, Sentinel Playbooks, Phantom)</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Highlights & Achievements</h2>
-        <ul>
-            <li>Cut SIEM licensing costs by six figures annually through optimisation & migration strategy.</li>
-            <li>Improved mean time to detect by 60%+ via targeted use cases and data tuning.</li>
-            <li>Scaled XDR coverage to thousands of endpoints globally with no downtime.</li>
-            <li>Directed multi-team response to ransomware, containing it within hours.</li>
-            <li>Delivered advanced manual penetration tests, finding critical vulnerabilities in high-value systems.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Selected Projects</h2>
-        <ul>
-            <li><strong>Global SIEM Cost Reduction</strong> – Led initiative cutting annual costs by six figures via log source optimisation and retention tuning.</li>
-            <li><strong>XDR Deployment Across Regions</strong> – Rolled out global endpoint security coverage with high detection fidelity.</li>
-            <li><strong>Critical Incident Containment</strong> – Contained ransomware outbreak in hours, restoring systems quickly.</li>
-            <li><strong>Penetration Testing</strong> – Delivered OSCP-style manual exploits on web, network, and cloud systems.</li>
-            <li><strong>SOAR Automation</strong> – Built automation playbooks cutting response time by over 70%.</li>
-            <li><strong>Zero Trust Implementation</strong> – Integrated multi-cloud network access controls and continuous monitoring.</li>
-        </ul>
-    </div>
-
-    <!-- NEW: Resume card (matches the look of Certifications) -->
-    <div class="card">
-        <h2>Resume</h2>
-        <p>Prefer a PDF? Grab a copy of my latest resume below.</p>
-        <p>
-            <a class="link-btn" href="https://github.com/secnnet/BilelPortfolio/raw/main/Resume.pdf" target="_blank">
-                <i class="fa-regular fa-file-pdf"></i> Download Resume (PDF)
-            </a>
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>Certifications</h2>
-        <ul>
-            <li>OSCP, OSWP, OSWAP</li>
-            <li>CISSP</li>
-            <li>CompTIA Security+, PenTest+, Linux+</li>
-            <li>Splunk Certified Architect & Consultant</li>
-            <li>Palo Alto ACE</li>
-        </ul>
-    </div>
+<span class="blink">Press any key to continue...</span>
+  </pre>
 </div>
 
-<footer>
-    <a href="https://github.com/secnnet" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/graineb" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://medium.com/@bil3l" target="_blank" title="Medium"><i class="fab fa-medium-m"></i></a>
-</footer>
+<!-- Portfolio -->
+<main id="portfolio" class="crt hidden" role="main" aria-label="Retro terminal portfolio">
+  <div class="hdr">
+    <span class="lamp on"></span>
+    <pre class="title">Bilel_Graine :: Cybersecurity_Portfolio_1991 <span class="blink">▌</span></pre>
+  </div>
+
+<pre>
+[OK] loading profile.............. done
+[OK] initializing detections...... done
+[OK] arming playbooks............. done
+</pre>
+
+<div class="box">
+  <h2>ABOUT</h2>
+  <p>I help teams find threats early — and respond fast. Work spans SIEM/EDR/XDR, detection engineering,
+  incident response, and pragmatic automation. Based in Leeds. Powered by coffee and Brazilian Jiu-Jitsu.</p>
+</div>
+
+<div class="box">
+  <h2>CORE EXPERTISE</h2>
+  <div class="cols">
+    <div>
+      <ul>
+        <li>Threat detection & response (Sentinel, Splunk, Chronicle)</li>
+        <li>EDR/XDR (Defender, CrowdStrike, Cortex XDR)</li>
+        <li>Incident response & SOC leadership</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>Pen testing & red teaming (OSCP methodology)</li>
+        <li>SOAR playbooks & automation</li>
+        <li>MITRE-mapped use cases</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>Cloud & network security (Azure, AWS)</li>
+        <li>Zero-trust patterns, firewall hardening</li>
+        <li>Cost/ingest optimisation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h2>HIGHLIGHTS</h2>
+  <ul>
+    <li>Six-figure SIEM savings via log engineering & retention tuning</li>
+    <li>60%+ faster MTTD with high-signal detections & cleaner telemetry</li>
+    <li>Scaled XDR to thousands of endpoints across regions with zero downtime</li>
+    <li>Directed multi-team ransomware response — contained within hours</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h2>SELECTED PROJECTS</h2>
+  <ul>
+    <li>Global SIEM cost reduction — filter/noise cuts + storage tiering (Sentinel, Splunk)</li>
+    <li>Multi-region XDR rollout — high-fidelity coverage at scale (Defender, CrowdStrike)</li>
+    <li>OSCP-style manual testing — critical vulns across web/network/cloud</li>
+    <li>SOAR automation — phishing/malware playbooks, 70%+ MTTR reduction</li>
+    <li>Zero trust enablement — identity-centric access across multi-cloud</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h2>RESUME</h2>
+  <p class="muted">Need a printable copy?</p>
+  <p><a class="mono" href="https://github.com/secnnet/BilelPortfolio/raw/main/Resume.pdf" target="_blank">download :: Resume.pdf</a></p>
+</div>
+
+<div class="box">
+  <h2>CERTIFICATIONS</h2>
+  <ul>
+    <li>OSCP, OSWP, OSWA</li>
+    <li>CISSP</li>
+    <li>CompTIA Security+, PenTest+, Linux+</li>
+    <li>Splunk Certified Architect & Accredited Consultant</li>
+    <li>Palo Alto ACE</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h2>CONTACT</h2>
+  <div class="row">
+    <span class="chip">email :: <a href="mailto:bilel.graine@pm.me">bilel.graine@pm.me</a></span>
+    <span class="chip"><a href="https://github.com/secnnet" target="_blank">github :: secnnet</a></span>
+    <span class="chip"><a href="https://linkedin.com/in/graineb" target="_blank">linkedin :: /in/graineb</a></span>
+    <span class="chip"><a href="https://medium.com/@bil3l" target="_blank">medium :: @bil3l</a></span>
+  </div>
+</div>
+
+<pre class="muted">
+$ exit
+connection closed.
+</pre>
+</main>
 
 <script>
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.2 });
-    cards.forEach(card => observer.observe(card));
+document.addEventListener("keydown", showPortfolio);
+document.addEventListener("click", showPortfolio);
+
+function showPortfolio(){
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("portfolio").classList.remove("hidden");
+}
 </script>
 
 </body>
 </html>
-
