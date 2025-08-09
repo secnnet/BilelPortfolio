@@ -21,27 +21,32 @@
   .blink{animation:blink 1s steps(2,end) infinite}
   @keyframes blink{50%{opacity:0}}
   .hidden{display:none}
-
-  /* Fade-in effect */
-  .fade-in{
-    opacity:0;
-    animation:fade 1.5s ease forwards;
-  }
-  @keyframes fade{
-    from {opacity:0;}
-    to {opacity:1;}
-  }
-
-  /* CRT container */
   .crt{
     width:min(960px,95vw);
     margin:20px auto;
     padding:18px 16px;
+    position:relative;
     border:2px solid var(--fg);
     box-shadow:0 0 0 4px #081108 inset, 0 0 32px rgba(179,255,102,.18);
+    background:linear-gradient(rgba(255,255,255,.03),rgba(0,0,0,.03));
+  }
+  .crt::before{
+    content:""; position:absolute; inset:-2px; pointer-events:none;
+    border-radius:4px;
     background:
-      linear-gradient(rgba(255,255,255,.03),rgba(0,0,0,.03)),
-      repeating-linear-gradient(0deg, rgba(160,255,120,.06) 0 2px, transparent 2px 4px);
+      radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.05), transparent 50%),
+      radial-gradient(120% 100% at 50% 120%, rgba(0,0,0,.35), transparent 50%);
+    mix-blend-mode:overlay;
+  }
+  .crt::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(160,255,120,.055) 0 2px, transparent 2px 4px);
+    mix-blend-mode:overlay; opacity:.9;
+    animation:scanFlicker 8s linear infinite;
+  }
+  @keyframes scanFlicker{
+    0%,100%{opacity:.9}
+    50%    {opacity:.85}
   }
   .hdr{display:flex; align-items:center; gap:.6rem; margin-bottom:10px}
   .lamp{width:10px;height:10px;border:1px solid var(--fg);border-radius:50%}
@@ -60,6 +65,11 @@
   .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
   .chip{border:1px dashed var(--dim); padding:6px 10px}
   .mono{font-family:inherit}
+  .pulse{animation:phosphor .18s ease-out;}
+  @keyframes phosphor{
+    0%  { text-shadow:0 0 14px rgba(179,255,102,.9), 0 0 28px rgba(179,255,102,.6) }
+    100%{ text-shadow:0 0 6px  rgba(179,255,102,.25) }
+  }
 </style>
 </head>
 <body>
@@ -76,12 +86,13 @@
 </div>
 
 <!-- Portfolio -->
-<main id="portfolio" class="crt hidden fade-in" role="main" aria-label="Retro terminal portfolio">
+<main id="portfolio" class="crt hidden">
   <div class="hdr">
     <span class="lamp on"></span>
     <pre class="title">Bilel_Graine :: Cybersecurity_Portfolio_1991 <span class="blink">▌</span></pre>
   </div>
 
+  <div id="content" class="hidden">
 <pre>
 [OK] loading profile.............. done
 [OK] initializing detections...... done
@@ -173,18 +184,37 @@
 $ exit
 connection closed.
 </pre>
+  </div>
 </main>
 
 <script>
-document.addEventListener("keydown", showPortfolio);
-document.addEventListener("click", showPortfolio);
-
-function showPortfolio(){
-  document.getElementById("intro").classList.add("hidden");
-  let portfolio = document.getElementById("portfolio");
-  portfolio.classList.remove("hidden");
-  portfolio.classList.add("fade-in");
-}
+  document.addEventListener("keydown", startReveal);
+  document.addEventListener("click", startReveal);
+  let started = false;
+  function startReveal(){
+    if(started) return;
+    started = true;
+    document.getElementById("intro").classList.add("hidden");
+    const portfolio = document.getElementById("portfolio");
+    portfolio.classList.remove("hidden");
+    const content = document.getElementById("content");
+    const raw = content.innerHTML;
+    const lines = raw.split("\n");
+    content.innerHTML = "";
+    content.classList.remove("hidden");
+    let i = 0;
+    function addLine(){
+      if(i < lines.length){
+        content.innerHTML += lines[i] + "\n";
+        content.classList.remove('pulse');
+        void content.offsetWidth;
+        content.classList.add('pulse');
+        i++;
+        setTimeout(addLine, 70);
+      }
+    }
+    addLine();
+  }
 </script>
 
 </body>
