@@ -1,221 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bilel Graine — Cybersecurity (circa 1991)</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bilel Graine — Cybersecurity Portfolio (1989)</title>
+<meta name="description" content="Bilel Graine — cybersecurity architect. SIEM/EDR/XDR, detection engineering, incident response, SOAR, and cloud security." />
+<meta property="og:title" content="Bilel Graine — Cybersecurity Portfolio (1989)" />
+<meta property="og:description" content="Threat detection & response • SIEM/EDR/XDR • Incident response • SOAR • Cloud & network security" />
+<meta name="theme-color" content="#00ff66" />
 <style>
   :root{
-    --bg:#0b0f0b;
-    --fg:#afff9c;
-    --dim:#82c77a;
-    --accent:#b3ff66;
+    --bg:#000;
+    --fg:#00ff66;
+    --scan:rgba(0,255,102,0.045);
   }
   html,body{height:100%}
   body{
     margin:0; background:var(--bg); color:var(--fg);
-    font:16px/1.55 "IBM Plex Mono","VT323","Courier New",Courier,monospace;
-    text-shadow:0 0 6px rgba(179,255,102,.25);
-    display:flex; align-items:center; justify-content:center;
+    font:16px/1.45 "Courier New", Courier, monospace;
   }
-  .blink{animation:blink 1s steps(2,end) infinite}
-  @keyframes blink{50%{opacity:0}}
   .hidden{display:none}
+
+  /* Boot screen */
+  #boot{max-width:min(92vw,90ch); margin:6vh auto 0; white-space:pre; padding:8px}
+  .blink{animation:blink 1s steps(2, start) infinite}
+  @keyframes blink { to { visibility:hidden } }
+
+  /* Terminal screen */
   .crt{
-    width:min(960px,95vw);
-    margin:20px auto;
-    padding:18px 16px;
-    position:relative;
-    border:2px solid var(--fg);
-    box-shadow:0 0 0 4px #081108 inset, 0 0 32px rgba(179,255,102,.18);
-    background:linear-gradient(rgba(255,255,255,.03),rgba(0,0,0,.03));
-  }
-  .crt::before{
-    content:""; position:absolute; inset:-2px; pointer-events:none;
-    border-radius:4px;
-    background:
-      radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.05), transparent 50%),
-      radial-gradient(120% 100% at 50% 120%, rgba(0,0,0,.35), transparent 50%);
-    mix-blend-mode:overlay;
+    position:relative; isolation:isolate;
+    max-width:min(92vw, 100ch);
+    height:min(70vh, 40rem);
+    margin:6vh auto 0; padding:14px;
+    white-space:pre-wrap; overflow:auto;
+    box-shadow:inset 0 0 90px rgba(0,255,0,0.18), 0 0 60px rgba(0,255,0,0.08);
+    border:1px solid rgba(0,255,102,0.25); border-radius:4px;
+    line-height:1.6;               /* ↑ more readable lines inside CRT */
   }
   .crt::after{
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background:repeating-linear-gradient(0deg, rgba(160,255,120,.055) 0 2px, transparent 2px 4px);
-    mix-blend-mode:overlay; opacity:.9;
-    animation:scanFlicker 8s linear infinite;
+    content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen;
+    background:repeating-linear-gradient(to bottom, var(--scan) 0px, var(--scan) 1px, transparent 3px);
   }
-  @keyframes scanFlicker{
-    0%,100%{opacity:.9}
-    50%    {opacity:.85}
+
+  /* cursor */
+  .cursor{
+    display:inline-block; width:10px; height:1em; background:var(--fg);
+    vertical-align:bottom; margin-left:2px; animation:blink .9s steps(2,end) infinite;
   }
-  .hdr{display:flex; align-items:center; gap:.6rem; margin-bottom:10px}
-  .lamp{width:10px;height:10px;border:1px solid var(--fg);border-radius:50%}
-  .lamp.on{background:var(--accent);box-shadow:0 0 10px var(--accent)}
-  .title{white-space:nowrap; overflow:hidden}
-  pre, .box{margin:14px 0}
-  .box{padding:10px 12px;border:1px dashed var(--dim)}
-  h2{margin:0 0 6px 0; font-size:1rem; letter-spacing:.06em; color:var(--accent)}
-  a{color:var(--accent); text-decoration:none}
-  a:hover{color:#fff; text-shadow:0 0 10px var(--accent)}
-  .cols{display:grid; grid-template-columns:1fr; gap:12px}
-  @media(min-width:760px){ .cols{grid-template-columns:1fr 1fr 1fr} }
-  ul{list-style:none; padding-left:0; margin:8px 0 0}
-  ul li::before{content:"> "; color:var(--dim)}
-  .muted{color:var(--dim)}
-  .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-  .chip{border:1px dashed var(--dim); padding:6px 10px}
-  .mono{font-family:inherit}
-  .pulse{animation:phosphor .18s ease-out;}
-  @keyframes phosphor{
-    0%  { text-shadow:0 0 14px rgba(179,255,102,.9), 0 0 28px rgba(179,255,102,.6) }
-    100%{ text-shadow:0 0 6px  rgba(179,255,102,.25) }
+
+  a{ color:var(--fg); text-decoration:underline }
+  a:hover{ text-decoration:none }
+
+  /* Reduced motion: skip typing effect automatically */
+  @media (prefers-reduced-motion: reduce) {
+    .blink, .cursor{ animation:none }
+  }
+
+  /* Help hint — slightly dimmer so it doesn't distract */
+  .hint{
+    max-width:min(92vw,90ch); margin:1rem auto 0;
+    color:rgba(0,255,102,0.55);       /* ↓ brightness */
+    font-size:0.95rem
   }
 </style>
 </head>
 <body>
 
-<!-- Intro screen -->
-<div id="intro">
-  <pre>
-[BOOTING SYSTEM...]
-[LOADING KERNEL.............OK]
-[INIT COMPLETE]
+<!-- BOOT -->
+<div id="boot" role="status" aria-live="polite">
+Bilel Graine BIOS v1.89
+(C) 1989 Graine Microsystems, All Rights Reserved
 
-<span class="blink">Press any key to continue...</span>
-  </pre>
+[OK] Memory test............. 640K OK
+[OK] Keyboard................ Detected
+[OK] Display adapter......... Monochrome Green
+[OK] Network interface....... Linked
+[OK] Security modules........ Loaded
+[OK] SIEM/EDR engines........ Active
+
+Press any key to continue<span class="blink">_</span>
 </div>
 
-<!-- Portfolio -->
-<main id="portfolio" class="crt hidden">
-  <div class="hdr">
-    <span class="lamp on"></span>
-    <pre class="title">Bilel_Graine :: Cybersecurity_Portfolio_1991 <span class="blink">▌</span></pre>
-  </div>
-
-  <div id="content" class="hidden">
-<pre>
-[OK] loading profile.............. done
-[OK] initializing detections...... done
-[OK] arming playbooks............. done
-</pre>
-
-<div class="box">
-  <h2>ABOUT</h2>
-  <p>I help teams find threats early — and respond fast. Work spans SIEM/EDR/XDR, detection engineering,
-  incident response, and pragmatic automation. Based in Leeds. Powered by coffee and Brazilian Jiu-Jitsu.</p>
+<!-- TERMINAL -->
+<div id="termWrap" class="hidden" aria-hidden="true">
+  <div id="term" class="crt" aria-live="polite" tabindex="0"></div>
 </div>
-
-<div class="box">
-  <h2>CORE EXPERTISE</h2>
-  <div class="cols">
-    <div>
-      <ul>
-        <li>Threat detection & response (Sentinel, Splunk, Chronicle)</li>
-        <li>EDR/XDR (Defender, CrowdStrike, Cortex XDR)</li>
-        <li>Incident response & SOC leadership</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Pen testing & red teaming (OSCP methodology)</li>
-        <li>SOAR playbooks & automation</li>
-        <li>MITRE-mapped use cases</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Cloud & network security (Azure, AWS)</li>
-        <li>Zero-trust patterns, firewall hardening</li>
-        <li>Cost/ingest optimisation</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="box">
-  <h2>HIGHLIGHTS</h2>
-  <ul>
-    <li>Six-figure SIEM savings via log engineering & retention tuning</li>
-    <li>60%+ faster MTTD with high-signal detections & cleaner telemetry</li>
-    <li>Scaled XDR to thousands of endpoints across regions with zero downtime</li>
-    <li>Directed multi-team ransomware response — contained within hours</li>
-  </ul>
-</div>
-
-<div class="box">
-  <h2>SELECTED PROJECTS</h2>
-  <ul>
-    <li>Global SIEM cost reduction — filter/noise cuts + storage tiering (Sentinel, Splunk)</li>
-    <li>Multi-region XDR rollout — high-fidelity coverage at scale (Defender, CrowdStrike)</li>
-    <li>OSCP-style manual testing — critical vulns across web/network/cloud</li>
-    <li>SOAR automation — phishing/malware playbooks, 70%+ MTTR reduction</li>
-    <li>Zero trust enablement — identity-centric access across multi-cloud</li>
-  </ul>
-</div>
-
-<div class="box">
-  <h2>RESUME</h2>
-  <p class="muted">Need a printable copy?</p>
-  <p><a class="mono" href="https://github.com/secnnet/BilelPortfolio/raw/main/Resume.pdf" target="_blank">download :: Resume.pdf</a></p>
-</div>
-
-<div class="box">
-  <h2>CERTIFICATIONS</h2>
-  <ul>
-    <li>OSCP, OSWP, OSWA</li>
-    <li>CISSP</li>
-    <li>CompTIA Security+, PenTest+, Linux+</li>
-    <li>Splunk Certified Architect & Accredited Consultant</li>
-    <li>Palo Alto ACE</li>
-  </ul>
-</div>
-
-<div class="box">
-  <h2>CONTACT</h2>
-  <div class="row">
-    <span class="chip">email :: <a href="mailto:bilel.graine@pm.me">bilel.graine@pm.me</a></span>
-    <span class="chip"><a href="https://github.com/secnnet" target="_blank">github :: secnnet</a></span>
-    <span class="chip"><a href="https://linkedin.com/in/graineb" target="_blank">linkedin :: /in/graineb</a></span>
-    <span class="chip"><a href="https://medium.com/@bil3l" target="_blank">medium :: @bil3l</a></span>
-  </div>
-</div>
-
-<pre class="muted">
-$ exit
-connection closed.
-</pre>
-  </div>
-</main>
+<p class="hint" id="hint" aria-hidden="true">
+  Tip: press any key or click to start/skip typing. Press Esc to show everything instantly.
+  Typing speed can be tuned via URL hash: <code>#fast</code>, <code>#slow</code>, or <code>#instant</code>.
+</p>
 
 <script>
-  document.addEventListener("keydown", startReveal);
-  document.addEventListener("click", startReveal);
-  let started = false;
-  function startReveal(){
-    if(started) return;
-    started = true;
-    document.getElementById("intro").classList.add("hidden");
-    const portfolio = document.getElementById("portfolio");
-    portfolio.classList.remove("hidden");
-    const content = document.getElementById("content");
-    const raw = content.innerHTML;
-    const lines = raw.split("\n");
-    content.innerHTML = "";
-    content.classList.remove("hidden");
-    let i = 0;
-    function addLine(){
-      if(i < lines.length){
-        content.innerHTML += lines[i] + "\n";
-        content.classList.remove('pulse');
-        void content.offsetWidth;
-        content.classList.add('pulse');
-        i++;
-        setTimeout(addLine, 70);
-      }
-    }
-    addLine();
-  }
-</script>
+  // ======= Controls (can be overridden by URL hash) =======
+  const SPEEDS = { slow:{step:1, delay:28}, normal:{step:2, delay:22}, fast:{step:3, delay:14} };
+  let mode = 'normal';
+  if (location.hash === '#fast') mode='fast';
+  if (location.hash === '#slow') mode='slow';
+  if (location.hash === '#instant') mode='instant';
 
+  const boot = document.getElementById('boot');
+  const termWrap = document.getElementById('termWrap');
+  const term = document.getElementById('term');
+  const hint = document.getElementById('hint');
+
+  // Portfolio content (1989 ASCII style)
+  const portfolioText =
+`Bilel_Graine :: Cybersecurity_Portfolio_1989
+------------------------------------------------------------
+ABOUT:
+ I help teams find threats early and respond fast.
+ Work spans SIEM/EDR/XDR, detection engineering,
+ incident response, and pragmatic automation.
+ Based in Leeds. Powered by coffee + Brazilian Jiu-Jitsu.
+
+------------------------------------------------------------
+CORE EXPERTISE:
+ > Threat detection & response (Sentinel, Splunk, Chronicle)
+ > EDR/XDR (Defender, CrowdStrike, Cortex XDR)
+ > Incident response & SOC leadership
+ > Pen testing & red teaming (OSCP methodology)
+ > SOAR playbooks & automation
+ > MITRE-mapped use cases
+ > Cloud & network security (Azure, AWS)
+ > Zero-trust patterns, firewall hardening
+ > Cost/ingest optimisation
+
+------------------------------------------------------------
+HIGHLIGHTS:
+ > Six-figure SIEM savings via log engineering & retention tuning
+ > 60%+ faster MTTD with high-signal detections
+ > Scaled XDR to thousands of endpoints, zero downtime
+ > Directed ransomware response — contained within hours
+
+------------------------------------------------------------
+RESUME:
+ > download: https://github.com/secnnet/BilelPortfolio/raw/main/Resume.pdf
+
+------------------------------------------------------------
+CERTIFICATIONS:
+ > OSCP, OSWP, OSWA
+ > CISSP
+ > CompTIA Security+, PenTest+, Linux+
+ > Splunk Certified Architect & Accredited Consultant
+ > Palo Alto ACE
+
+------------------------------------------------------------
+CONTACT:
+ email:    bilel.graine@pm.me
+ github:   https://github.com/secnnet
+ linkedin: https://linkedin.com/in/graineb
+ medium:   https://medium.com/@bil3l
+
+C:\\> _`;
+
+  let typing = false, idx = 0, buffer = '';
+
+  function linkify(str){
+    const urlRe = /(https?:\/\/[^\s]+)/g;
+    const emailRe = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+    return str
+      .replace(urlRe, '<a href="$1" target="_blank" rel="noopener">$1</a>')
+      .replace(emailRe, '<a href="mailto:$1">$1</a>');
+  }
+
+  function showTerminal(){
+    boot.classList.add('hidden');
+    termWrap.classList.remove('hidden');
+    termWrap.removeAttribute('aria-hidden');
+    hint.removeAttribute('aria-hidden');
+  }
+
+  function startTyping(){
+    showTerminal();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || mode === 'instant') {
+      finishInstant();
+      return;
+    }
+    typing = true;
+    typeTick();
+  }
+
+  function finishInstant(){
+    buffer = portfolioText;
+    term.innerHTML = linkify(buffer) + '<span class="cursor" aria-hidden="true"></span>';
+    term.scrollTop = term.scrollHeight;
+    typing = false;
+  }
+
+  function typeTick(){
+    if(!typing) return;
+    const step = SPEEDS[mode].step, delay = SPEEDS[mode].delay;
+    idx = Math.min(idx + step, portfolioText.length);
+    buffer = portfolioText.slice(0, idx);
+    term.textContent = buffer; // avoid partial HTML while typing
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.setAttribute('aria-hidden','true');
+    term.appendChild(cursor);
+    term.scrollTop = term.scrollHeight;
+
+    if(idx < portfolioText.length){
+      setTimeout(typeTick, delay);
+    } else {
+      term.innerHTML = linkify(buffer) + '<span class="cursor" aria-hidden="true"></span>';
+      typing = false;
+    }
+  }
+
+  function handleInput(e){
+    if(e && e.key === 'Escape'){ showTerminal(); finishInstant(); return; }
+    if(!typing && !boot.classList.contains('hidden')) startTyping();
+    else if(typing) finishInstant();
+  }
+
+  document.addEventListener('keydown', handleInput);
+  document.addEventListener('click', handleInput);
+</script>
 </body>
 </html>
